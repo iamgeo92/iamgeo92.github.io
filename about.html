@@ -27,6 +27,15 @@
 
 
 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
+
+
+
+
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166499826-1"></script>
 <script>
@@ -200,21 +209,46 @@
 
             <div class="row">
               <div class="col-lg-3"> </div>
-              <div class="col-lg-6"> 
+              <div class="col-lg-6">
+              <form id="test-form" > 
                 <div class="row">
                   <div class="col-lg-8"> 
-                     <form action="#">
-                      <input style="font-size: 18px;" class="form-control main" type="email" placeholder="Phone number">
-                    </form>
+                      
+                      <input name="phone" style="font-size: 18px;" class="form-control main" type="tel" placeholder="Phone number">
+                    
                   </div>
                   <div class="col-lg-4"> 
-                      <button class="btn btn-main-md" style="background-color: #3a8bfb">Text me the app</button>
+                      <button type="submit" id="submit-form" class="btn btn-main-md" style="background-color: #3a8bfb" value="Text me the app">Text me the app</button>
 
                   </div>
                 </div>
+              </form>
               </div>
               <div class="col-lg-3"> </div>
             </div>
+
+
+            <script type="text/javascript">
+                
+                var $form = $('form#test-form'),
+                      url = 'https://script.google.com/macros/s/AKfycbwXU3ucYQl7cIytgBcMdYQ8oE52Hj4ghf4JZfBcNl-UXYi9-CA/exec'
+
+                  $('#submit-form').on('click', function(e) {
+                    e.preventDefault();
+                    var jqxhr = $.ajax({
+                      url: url,
+                      method: "GET",
+                      dataType: "json",
+                      data: $form.serializeObject()
+                    }).success(
+                      // do something
+                      alert("Thanks for sign-up")
+                    );
+                  })
+
+
+            </script>
+
 
 
             <!-- <ul class="list-inline">
