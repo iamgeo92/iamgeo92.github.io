@@ -23,6 +23,11 @@
   <link rel="stylesheet" href="plugins/aos/aos.css">
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.serializeObject/2.0.3/jquery.serializeObject.min.js"></script>
+
+
+
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166499826-1"></script>
@@ -117,19 +122,19 @@
 				 <center><h2 class="mb-4">Drop us a mail</h2> </center>
 			</div> -->
     			<div class="col-md-6  offset-md-3">
-    				<form action="">
+    				<form  id="test-form" >
     					<div class="row">
     						<!-- Name -->
     						<div class="col-md-6">
-    							<input class="form-control main" type="text" placeholder="Name" required>
+    							<input name="name" class="form-control main" type="text" placeholder="Name" required>
     						</div>
     						<!-- Email -->
     						<div class="col-md-6">
-    							<input class="form-control main" type="email" placeholder="Your Email Address" required>
+    							<input name="email" class="form-control main" type="email" placeholder="Your Email Address" required>
     						</div>
     						<!-- subject -->
     						<div class="col-md-12">
-    							<input class="form-control main" type="text" placeholder="Subject" required>
+    							<input name="subject" class="form-control main" type="text" placeholder="Subject" required>
     						</div>
     						<!-- Message -->
     						<div class="col-md-12">
@@ -137,7 +142,7 @@
     						</div>
     						<!-- Submit Button -->
     						<div class="col-12 text-center">
-    							<button class="btn btn-main-md">Submit</button>
+    							<button id="submit-form"  class="btn btn-main-md">Submit</button>
     						</div>
     					</div>
     				</form>
@@ -145,6 +150,30 @@
 		</div>
 	</div>
 </section>
+
+
+<script type="text/javascript">
+                
+                var $form = $('form#test-form'),
+                      url = 'https://script.google.com/macros/s/AKfycbwXU3ucYQl7cIytgBcMdYQ8oE52Hj4ghf4JZfBcNl-UXYi9-CA/exec'
+
+                  $('#submit-form').on('click', function(e) {
+                    e.preventDefault();
+                    var jqxhr = $.ajax({
+                      url: url,
+                      method: "GET",
+                      dataType: "json",
+                      data: $form.serializeObject()
+                    }).success(
+                      // do something
+                      alert("Thanks for sending us a message")
+                    );
+                  })
+
+
+            </script>
+
+
 
 <!--============================
 =            Footer            =
