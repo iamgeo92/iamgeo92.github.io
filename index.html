@@ -237,7 +237,13 @@
                       data: $form.serializeObject()
                     }).success(
                       // do something
-                      alert("Thank you for signing up! We will send you the app near our July launch date.")
+                      alert("Thank you for signing up! We will send you the app near our July launch date.") ; 
+                      ga('send', {
+                        hitType: 'event',
+                        eventCategory: 'Form',
+                        eventAction: 'signup',
+                        eventLabel: 'signup'
+                      });
                     );
                   })
 
