@@ -2,6 +2,11 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+
+
+<!-- todo https://stackoverflow.com/questions/29285056/get-video-duration-when-input-a-video-file -->
+
 <style>
 * {
   box-sizing: border-box;
@@ -181,8 +186,31 @@ else{
 
     <h1>Record Video</h1>
 
-      <input class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
+      <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
       <br>
+
+
+      <script type="text/javascript">
+        
+
+        document.getElementById('video_inp').onchange = setFileInfo;
+
+        function setFileInfo(){
+          if( document.getElementById('video_inp').files[0].size > 25700240 )
+          {
+              alert( "Video too large. Please ensure the video is less than 30 seconds.");
+              document.getElementById('video_inp').value = '';
+          }
+          else{
+            // alert("all good");
+          }
+
+        }
+
+
+
+
+      </script>
 
   </div>
   <div class="tab">
