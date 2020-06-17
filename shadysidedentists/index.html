@@ -233,6 +233,7 @@
 
                   $('#submit-form').on('click', function(e) {
                     e.preventDefault();
+                    alert("Thank you for registering for this service. Dr. Hawranko will be providing photo consultations starting from June 24th, 2020. We will send you the app with detailed instructions on June 24th.");
                     var jqxhr = $.ajax({
                       url: url,
                       method: "GET",
@@ -241,7 +242,7 @@
                     }).success(
                       // do something
                       function(){
-                      alert("Thank you for registering for this service. Dr. Hawranko will be providing photo consultations starting from June 24th, 2020. We will send you the app with detailed instructions on June 24th.");
+                      
                       ga('send', {
                         hitType: 'event',
                         eventCategory: 'Form',
