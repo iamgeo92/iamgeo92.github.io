@@ -125,6 +125,108 @@ button:hover {
 .step.finish {
   background-color: #4CAF50;
 }
+
+
+
+
+/*the css for the fance check boxxxx*/
+
+
+.inputGroup {
+   background-color: #fff;
+   display: block;
+   margin: 10px 0;
+   position: relative;
+}
+ .inputGroup label {
+   padding: 12px 30px;
+   width: 100%;
+   display: block;
+   text-align: left;
+   color: #3c454c;
+   cursor: pointer;
+   position: relative;
+   z-index: 2;
+   transition: color 200ms ease-in;
+   overflow: hidden;
+}
+ .inputGroup label:before {
+   width: 20px;
+   height: 10px;
+   border-radius: 50%;
+   content: '';
+   background-color: #4CAF50;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%) scale3d(1, 1, 1);
+   transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+   opacity: 0;
+   z-index: -1;
+}
+ .inputGroup label:after {
+   width: 22px;
+   height:22px;
+   content: '';
+   border: 2px solid #d1d7dc;
+   background-color: #fff;
+   background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+   background-repeat: no-repeat;
+   background-position: 2px 3px;
+   border-radius: 50%;
+   z-index: 2;
+   position: absolute;
+   right: 30px;
+   top: 50%;
+   transform: translateY(-50%);
+   cursor: pointer;
+   transition: all 200ms ease-in;
+}
+ .inputGroup input:checked ~ label {
+   color: #fff;
+}
+ .inputGroup input:checked ~ label:before {
+   transform: translate(-50%, -50%) scale3d(56, 56, 1);
+   opacity: 1;
+}
+ .inputGroup input:checked ~ label:after {
+   background-color: #4CAF50;
+   border-color: #4CAF50;
+}
+ .inputGroup input {
+   width: 32px;
+   height: 32px;
+   order: 1;
+   z-index: 2;
+   position: absolute;
+   right: 30px;
+   top: 50%;
+   transform: translateY(-50%);
+   cursor: pointer;
+   visibility: hidden;
+}
+ .form {
+   padding: 0 16px;
+   max-width: 550px;
+   margin: 50px auto;
+   font-size: 18px;
+   font-weight: 600;
+   line-height: 36px;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 <body>
 
@@ -144,8 +246,68 @@ if(isMobile){
 
 }
 else{
-  alert("Please open this webapp on a mobile device. ");
-  window.location.href = "https://dentalsmarts.co";
+  // alert("Please open this webapp on a mobile device. ");
+  // window.location.href = "https://dentalsmarts.co";
+
+}
+
+
+
+
+data = {questions : [
+
+  {
+    "question" : "Sample question 1 " ,
+    "id" : "ques1" ,
+    "onlyif" : "" , 
+    "options" : [
+      { "id": "op_1" , "text": "Option 1 "  } , 
+      { "id": "op_2" , "text": "Option 2 "  } , 
+      { "id": "op_3" , "text": "Option 3 "  } ,
+    ]
+  } , 
+
+
+
+  {
+    "question" : "Sample question 2 " ,
+    "id" : "ques2" ,
+    "onlyif" : "ques1.op_2" , 
+    "options" : [
+      { "id": "op_1" , "text": "Option 222 1 "  } , 
+      { "id": "op_2" , "text": "Option 22 2 "  } , 
+      { "id": "op_3" , "text": "Option  333 3 "  } ,
+    ]
+  } , 
+
+]}
+
+
+
+responses = { } ;
+
+
+
+
+
+function ques_change( id )
+{
+   questions  = data.questions ;
+
+    for( var i=0 ; i< questions.length ; i++ )
+    {
+        var qid = questions[i].id; 
+        responses[qid] = {};
+
+        for( var j=0 ; j< questions[i]['options'].length ; j++ )
+        {
+          var oid = questions[i]['options'][j]['id'];
+          // alert(qid + "___" + oid );
+          responses[qid][oid] = document.getElementById( qid + "___" + oid ).checked ;
+        }
+
+    }
+
 
 }
 
@@ -155,23 +317,29 @@ else{
 
 <form id="regForm" action="/">
  
-  <!-- One "tab" for each step in the form: -->
+
+      <!-- One "tab" for each step in the form: -->
   <div class="tab">
 
 
-    <h1>Enter your details</h1>
+    <h1>About the app</h1>
 
 
-    Name:
+    some content regarding how to use the app will come here
 
-     
-
-
-    <p><input placeholder="First name" oninput="this.className = ''" name="fname"></p>
-
-    Email:
-    <p><input placeholder="Email" oninput="this.className = ''" name="lname"></p>
   </div>
+
+
+
+  
+
+
+
+
+
+
+
+
 
 
   <div class="tab">
@@ -179,7 +347,7 @@ else{
     <h1>Terms of Service</h1>
 
 
-   <label for="male">I accept</label><input type="radio" id="accept" oninput="this.className = ''"  name="do_accept" value="accept">
+   <label for="male">I accept</label><input type="radio" id="radio_accept"  oninput="this.className = ''"  name="do_accept" value="radio_accept">
 
   </div>
   <div class="tab">
@@ -202,7 +370,7 @@ else{
               document.getElementById('video_inp').value = '';
           }
           else{
-             alert("The video size is fine");
+            // alert("all good");
           }
 
         }
@@ -213,6 +381,85 @@ else{
       </script>
 
   </div>
+
+
+
+
+
+
+<!-- quesgtion begin -->
+
+  <div class="tab" onlyif="" >
+
+
+  <h1>Answer a Few Questions</h1>
+
+    <div style="  background-color: #efecec; padding: 20px; margin-bottom: 30px; ">
+
+      <h3>Sample question 1 </h3>
+
+       <br>  
+
+
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques1___op_1" name="ques1___op_1" type="checkbox"/>
+          <label for="ques1___op_1">Option 1 </label>
+        </div>
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques1___op_2" name="ques1___op_2" type="checkbox"/>
+          <label for="ques1___op_2">Option 2 </label>
+        </div>
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques1___op_3" name="ques1___op_3" type="checkbox"/>
+          <label for="ques1___op_3">Option 3 </label>
+        </div>
+        
+       
+      <br>  <br>  
+
+    </div>
+
+</div>
+
+
+<div class="tab" onlyif="ques1.op_2" >
+
+
+  <h1>Answer a Few Questions</h1>
+
+    <div style="  background-color: #efecec; padding: 20px; margin-bottom: 30px; ">
+
+      <h3>Sample question 2 </h3>
+
+       <br>  
+
+
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques2___op_1" name="ques2___op_1" type="checkbox"/>
+          <label for="ques2___op_1">Option 222 1 </label>
+        </div>
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques2___op_2" name="ques2___op_2" type="checkbox"/>
+          <label for="ques2___op_2">Option 22 2 </label>
+        </div>
+      <div class="inputGroup">
+          <input oninput='ques_change(this.id)' id="ques2___op_3" name="ques2___op_3" type="checkbox"/>
+          <label for="ques2___op_3">Option  333 3 </label>
+        </div>
+        
+       
+      <br>  <br>  
+
+    </div>
+
+</div>
+
+
+<!-- quesgtion end -->
+
+
+
+
   <div class="tab">
 
     <h1>Additional Information</h1>
@@ -225,6 +472,37 @@ else{
 
 
   </div>
+
+
+
+
+
+
+
+
+    <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+
+
+    <h1>Enter your details</h1>
+
+
+    Name:
+
+     
+
+
+    <p><input placeholder="First name" oninput="this.className = ''" name="fname"></p>
+
+    Email:
+    <p><input placeholder="Email" oninput="this.className = ''" name="lname"></p>
+  </div>
+
+
+
+
+
+
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -237,6 +515,11 @@ else{
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+     <span class="step"></span>
+
+
   </div>
 </form>
 
@@ -272,6 +555,20 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
+
+
+  var oif = document.getElementsByClassName("tab")[currentTab].getAttribute("onlyif");
+  if ( oif != undefined ){
+    if( oif != "")
+    {
+        var qid = oif.split(".")[0];
+        var aid = oif.split(".")[1];
+        if( )
+    }
+  }
+
+
+
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
@@ -290,7 +587,7 @@ function validateForm() {
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    if (y[i].value == "" || ( y[i].value.includes("radio")  && y[i].checked == false  ) ) {
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
