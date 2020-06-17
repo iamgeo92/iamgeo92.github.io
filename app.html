@@ -554,17 +554,33 @@ function nextPrev(n) {
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
+  
 
 
-  // var oif = document.getElementsByClassName("tab")[currentTab].getAttribute("onlyif");
-  // if ( oif != undefined ){
-  //   if( oif != "")
-  //   {
-  //       var qid = oif.split(".")[0];
-  //       var qaid = oif.split(".")[1];
-  //   }
-  // }
+
+  flag = 0;
+
+  while( flag == 0 ){
+    
+    flag = 1;
+    currentTab = currentTab + n;
+    var oif = document.getElementsByClassName("tab")[currentTab].getAttribute("onlyif");
+
+    if( oif != undefined )
+    {
+      if( oif != "")
+      {
+          var qid = oif.split(".")[0];
+          var aid = oif.split(".")[1];
+
+          if(!( responses[qid][aid]))
+          {
+              flag = 0;
+              // meaning skippppp 
+          }
+      }
+    }
+  }
 
 
 
