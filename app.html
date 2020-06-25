@@ -151,20 +151,47 @@ textarea.invalid {
 }
 
 
+.record_button{
+	border: none;
+}
+
 .record_button::-webkit-file-upload-button {
   visibility: hidden;
 }
 .record_button::before {
-  content: 'Click to Record';
+  content: 'Record a Video of \A Your Teeth';
   display: inline-block;
 
   background-color: #4CAF50;
   color: #ffffff;
   border: none;
-  padding: 10px 80px;
+  padding: 10px 20px;
   font-size: 17px;
   font-family: Lato; /* rail */
   cursor: pointer;
+
+
+
+  background: #B933F9;
+	border-radius: 60px;
+
+	box-shadow: 0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802), 0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725), 0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035), 0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275), 0px 41.7776px 33.4221px rgba(147, 120, 255, 0.0503198), 0px 100px 80px rgba(147, 120, 255, 0.07);
+
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	/*display: flex;*/
+	align-items: center;
+	text-align: center;
+
+	color: #FFFFFF;
+
+
+
+
+
 
   outline: none;
   white-space: nowrap;
@@ -527,7 +554,7 @@ var q_html = templateScript(data);
   <div class="tab">
 
 
-	    <h1 class="thetitle">Welcome to  Dental Smarts</h1>
+	    <h1 class="thetitle">Welcome to  Dental Smarts!</h1>
 
 	    <br> 
 	    <div class="whitebox">
@@ -586,10 +613,42 @@ var q_html = templateScript(data);
 
 
     	 <div style="   padding: 20px; ">
-    	<center>
-    		<button type="button" class="pinkbutton" id="nextBtnd" onclick="nextPrev(1)">Click to Record a Video of Your Teeth</button>
-    	</center>
-    </div>
+		    		
+
+
+		      <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
+		      <br>
+
+
+		      <script type="text/javascript">
+		        
+
+		        document.getElementById('video_inp').onchange = setFileInfo;
+
+		        function setFileInfo(){
+		          if( document.getElementById('video_inp').files[0].size > 25700240 )
+		          {
+		              alert( "Video too large. Please ensure the video is less than 30 seconds.");
+		              document.getElementById('video_inp').value = '';
+		          }
+		          else{
+		            // alert("all good");
+		            nextPrev(1);
+		          }
+
+
+
+		        }
+
+
+
+
+		      </script>
+
+
+
+
+     </div>
 
 
 
@@ -599,35 +658,11 @@ var q_html = templateScript(data);
 
 
 
-  <div class="tab">
+<!--   <div class="tab">
 
     <h1 class="thetitle" >Record Video</h1>
 
-      <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
-      <br>
 
-
-      <script type="text/javascript">
-        
-
-        document.getElementById('video_inp').onchange = setFileInfo;
-
-        function setFileInfo(){
-          if( document.getElementById('video_inp').files[0].size > 25700240 )
-          {
-              alert( "Video too large. Please ensure the video is less than 30 seconds.");
-              document.getElementById('video_inp').value = '';
-          }
-          else{
-            // alert("all good");
-          }
-
-        }
-
-
-
-
-      </script>
 
         <br> <br>
 
@@ -642,7 +677,7 @@ var q_html = templateScript(data);
 
   </div>
 
-
+ -->
 
 
 
