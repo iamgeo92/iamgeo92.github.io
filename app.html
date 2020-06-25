@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato" /* rail */ rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
 
 
 
@@ -13,27 +25,109 @@
 }
 
 body {
-  background-color: #f1f1f1;
+  background-color: #F2F6F9;
 }
 
 #regForm {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   margin: 20px auto;
-  font-family: Raleway;
-  padding: 40px;
+  font-family: Lato; /* rail */
+  padding: 20px;
   width: 97%;
-  max-width: 700px;
+  max-width: 400px;
 }
 
 h1 {
-  text-align: center;  
+  /*text-align: center;  */
 }
+
+.thetitle{
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 30px;
+	/* or 100% */
+
+	display: flex;
+	align-items: center;
+
+	color: #00093E;
+}
+
+
+.qtitle{
+	font-family: Lato;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 33px;
+	/* or 137% */
+
+	text-align: center;
+
+	color: #2E2E2E;
+}
+
+.whitebox{
+	background: #FFFFFF;
+	border: 1px solid #FBFCFD;
+	box-sizing: border-box;
+	box-shadow: 2px 11px 19px #E0F1FF, 6px 4px 4px rgba(224, 241, 255, 0.3);
+	border-radius: 20px;
+
+	padding: 20px;
+}
+
+
+.pinkbutton{
+	background: #B933F9;
+	border-radius: 60px;
+
+	box-shadow: 0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802), 0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725), 0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035), 0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275), 0px 41.7776px 33.4221px rgba(147, 120, 255, 0.0503198), 0px 100px 80px rgba(147, 120, 255, 0.07);
+
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+
+	color: #FFFFFF;
+
+
+}
+
+
+.bluebutton{
+	background: #32B9F3;
+	border-radius: 60px;
+
+	box-shadow: 0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802), 0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725), 0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035), 0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275), 0px 41.7776px 33.4221px rgba(147, 120, 255, 0.0503198), 0px 100px 80px rgba(147, 120, 255, 0.07);
+
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	
+
+	color: #FFFFFF;
+
+
+}
+
+ 
+
+
 
 input {
   padding: 10px;
   width: 100%;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: Lato; /* rail */
   border: 1px solid #aaaaaa;
 }
 
@@ -47,7 +141,7 @@ textarea {
   padding: 10px;
   width: 100%;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: Lato; /* rail */
   border: 1px solid #aaaaaa;
 }
 
@@ -69,7 +163,7 @@ textarea.invalid {
   border: none;
   padding: 10px 80px;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: Lato; /* rail */
   cursor: pointer;
 
   outline: none;
@@ -93,7 +187,7 @@ button {
   border: none;
   padding: 10px 20px;
   font-size: 17px;
-  font-family: Raleway;
+  font-family: Lato; /* rail */
   cursor: pointer;
 }
 
@@ -102,7 +196,7 @@ button:hover {
 }
 
 #prevBtn {
-  background-color: #bbbbbb;
+  /*background-color: #bbbbbb;*/
 }
 
 /* Make circles that indicate the steps of the form: */
@@ -133,7 +227,7 @@ button:hover {
 
 
 .inputGroup {
-   background-color: #fff;
+   background-color: #efecec;
    display: block;
    margin: 10px 0;
    position: relative;
@@ -232,6 +326,97 @@ button:hover {
 
 
 
+
+
+
+<script id="handlebars-demo" type="text/x-handlebars-template">
+
+
+
+
+	{{#each questions}}
+
+	<div class="tab" onlyif="{{this.onlyif}}">
+
+
+	  <h1 class="thetitle" >Answer a Few <br> Questions</h1>
+	  <br> <br>
+
+	    <div class="whitebox" style="  padding: 20px; margin-bottom: 30px; ">
+
+	    	<br>  
+
+	      <h3 class="qtitle">{{this.question}}</h3>
+
+	       <br>  
+
+
+	       {{#if this.multi_option}}
+
+		      {{#each this.options}}
+		      <div class="inputGroup">
+		          <input oninput='ques_change(this.id)' id="{{../this.id}}___{{this.id}}" name="{{../this.id}}___{{this.id}}" type="checkbox"/>
+		          <label for="{{../this.id}}___{{this.id}}">{{this.text}}</label>
+		        </div>
+		      {{/each}}
+
+	        {{/if}}
+
+
+	        {{#if this.single_option}}
+
+	         
+	        {{#each this.options}}
+		          <div class="inputGroup">
+					    <input oninput='ques_change(this.id)' id="{{../this.id}}___{{this.id}}" name="{{../this.id}}" type="radio"/>
+					    <label for="{{../this.id}}___{{this.id}}">
+					    	{{this.text}}
+					    </label>
+				 </div>
+
+			    
+		    {{/each}}
+		   
+
+	         
+	        {{/if}}
+
+
+	        
+	       
+	      <br>  <br>  
+
+	    </div>
+
+	    <br>  
+
+	    <div style="overflow:auto;">
+		    <div style="float:right;">
+		      <button type="button" class="bluebutton"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+		      <button type="button" class="bluebutton"  id="nextBtn" onclick="nextPrev(1)">Next</button>
+		    </div>
+		 </div>
+
+
+
+	</div>
+
+	{{/each}}
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
   
   var isMobile = false; //initiate as false
@@ -257,13 +442,14 @@ else{
 data = {questions : [
 
   {
-    "question" : "Sample question 1 " ,
+    "question" : "In which of these areas do you have pain?" ,
     "id" : "ques1" ,
+    "multi_option":"True" , 
     "onlyif" : "" , 
     "options" : [
       { "id": "op_1" , "text": "Option 1 "  } , 
       { "id": "op_2" , "text": "Option 2 "  } , 
-      { "id": "op_3" , "text": "Option 3 "  } ,
+       { "id": "op_3" , "text": "Option 3 "  } ,
     ]
   } , 
 
@@ -272,6 +458,7 @@ data = {questions : [
   {
     "question" : "Sample question 2 " ,
     "id" : "ques2" ,
+    "single_option":"True" , 
     "onlyif" : "ques1.op_2" , 
     "options" : [
       { "id": "op_1" , "text": "Option 222 1 "  } , 
@@ -312,7 +499,25 @@ function ques_change( id )
 }
 
 
+
+var template = $('#handlebars-demo').html();
+
+// Compile the template data into a function
+var templateScript = Handlebars.compile(template);
+
+// html = 'My name is Ritesh Kumar. I am a developer.'
+var q_html = templateScript(data);
+
+
+
+
+
 </script>
+
+
+
+
+
 
 
 <form id="regForm" action="/">
@@ -322,17 +527,33 @@ function ques_change( id )
   <div class="tab">
 
 
-    <h1>About the app</h1>
+	    <h1 class="thetitle">Welcome to  Dental Smarts!</h1>
+
+	    <br> 
+	    <div class="whitebox">
+	    	<img src="h2.svg" width="100%">
+	    </div>
+
+	    <br>   
+
+	    <div class="whitebox"> 
+	    	  
+	    	  <img src="h2.png" width="100%">
+
+	    	 <div style="   padding: 20px; ">
+	    	<center>
+	    		<button type="button" class="pinkbutton" id="nextBtnd" onclick="nextPrev(1)">Click Here to Get a Dental Report Card</button>
+	    	</center>
+	    </div>
 
 
-    some content regarding how to use the app will come here
+	    </div>
+
+
+   
+
 
   </div>
-
-
-
-  
-
 
 
 
@@ -344,15 +565,43 @@ function ques_change( id )
 
   <div class="tab">
 
-    <h1>Terms of Service</h1>
+    <h1 class="thetitle" >Record Video</h1>
 
 
-   <label for="male">I accept</label><input type="radio" id="radio_accept"  oninput="this.className = ''"  name="do_accept" value="radio_accept">
+    <br> 
+    <div class="whitebox">
+    	<b> First, take a 30 second video  of your teeth. </b>
+    </div>
+
+    <br>   
+
+    <div class="whitebox"> 
+    	  
+    	 <b> Here's a tutorial showing you how to take a good video </b>
+
+    	 <br><br>
+
+    	 <iframe width="100%"   src="https://www.youtube.com/embed/glP78Bp-rdE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+    	 <div style="   padding: 20px; ">
+    	<center>
+    		<button type="button" class="pinkbutton" id="nextBtnd" onclick="nextPrev(1)">Click to Record a Video of Your Teeth</button>
+    	</center>
+    </div>
+
+
+
 
   </div>
+</div>
+
+
+
   <div class="tab">
 
-    <h1>Record Video</h1>
+    <h1 class="thetitle" >Record Video</h1>
 
       <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
       <br>
@@ -380,95 +629,60 @@ function ques_change( id )
 
       </script>
 
+        <br> <br>
+
+        <div style="overflow:auto;">
+		    <div style="float:right;">
+		      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+		      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+		    </div>
+		 </div>
+
+
+
   </div>
 
 
 
 
 
-
-<!-- quesgtion begin -->
-
-  <div class="tab" onlyif="" >
-
-
-  <h1>Answer a Few Questions</h1>
-
-    <div style="  background-color: #efecec; padding: 20px; margin-bottom: 30px; ">
-
-      <h3>Sample question 1 </h3>
-
-       <br>  
+<script type="text/javascript">
+	document.write(q_html)
+</script>
 
 
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques1___op_1" name="ques1___op_1" type="checkbox"/>
-          <label for="ques1___op_1">Option 1 </label>
-        </div>
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques1___op_2" name="ques1___op_2" type="checkbox"/>
-          <label for="ques1___op_2">Option 2 </label>
-        </div>
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques1___op_3" name="ques1___op_3" type="checkbox"/>
-          <label for="ques1___op_3">Option 3 </label>
-        </div>
-        
-       
-      <br>  <br>  
-
-    </div>
-
-</div>
 
 
-<div class="tab" onlyif="ques1.op_2" >
-
-
-  <h1>Answer a Few Questions</h1>
-
-    <div style="  background-color: #efecec; padding: 20px; margin-bottom: 30px; ">
-
-      <h3>Sample question 2 </h3>
-
-       <br>  
-
-
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques2___op_1" name="ques2___op_1" type="checkbox"/>
-          <label for="ques2___op_1">Option 222 1 </label>
-        </div>
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques2___op_2" name="ques2___op_2" type="checkbox"/>
-          <label for="ques2___op_2">Option 22 2 </label>
-        </div>
-      <div class="inputGroup">
-          <input oninput='ques_change(this.id)' id="ques2___op_3" name="ques2___op_3" type="checkbox"/>
-          <label for="ques2___op_3">Option  333 3 </label>
-        </div>
-        
-       
-      <br>  <br>  
-
-    </div>
-
-</div>
-
-
-<!-- quesgtion end -->
 
 
 
 
   <div class="tab">
 
-    <h1>Additional Information</h1>
+    <h1 class="thetitle" >Do You Have Any Other Queries/Concerns?</h1>
+    <br><br>
+    <div class="whitebox">
 
-    Put in any other queries / problems you are facing. 
-    <p><input placeholder="Title" oninput="this.className = ''" name="title"></p>
+	    <b> Let us know if there is anything else regarding your oral health that we can help with. </b>
 
-    <textarea   name="message" rows="10" placeholder="Your Message"></textarea>
-    
+	    <br><br>
+
+	    <p><input placeholder="Title" oninput="this.className = ''" name="title"></p>
+
+	    <textarea   name="message" rows="10" placeholder="Your Message"></textarea>
+	    
+	    
+	</div>
+
+	<br> <br>
+	<div style="overflow:auto;">
+		    <div style="float:right;">
+		      <button type="button" class="bluebutton" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+		      <button type="button" class="bluebutton" id="nextBtn" onclick="nextPrev(1)">Next</button>
+		    </div>
+		 </div>
+
+
 
 
   </div>
@@ -484,33 +698,63 @@ function ques_change( id )
   <div class="tab">
 
 
-    <h1>Enter your details</h1>
+    <h1 class="thetitle">We'll Email Your Dental  Report Card in 24 Hours</h1>
+    <br> <br>
+  
+    <div class="whitebox">
+
+    	<b> Enter your Details:</b>
+
+    	<br> <br>
+
+	    Name:
+
+	     
 
 
-    Name:
+	    <p><input placeholder="First name" oninput="this.className = ''" name="fname"></p>
 
-     
+	    Email:
+	    <p><input placeholder="Email" oninput="this.className = ''" name="lname"></p>
 
 
-    <p><input placeholder="First name" oninput="this.className = ''" name="fname"></p>
-
-    Email:
-    <p><input placeholder="Email" oninput="this.className = ''" name="lname"></p>
-  </div>
+	   <label for="male">I have read and agree to the terms of service.</label><input type="radio" id="radio_accept"  oninput="this.className = ''"  name="do_accept" value="radio_accept">
 
 
 
 
-
-
-  <div style="overflow:auto;">
-    <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
+
+
+    <div style="overflow:auto;">
+		    <div style=" ">
+		      
+		      <center>
+		      	<br>
+		      <button type="button" class="pinkbutton"   id="nextBtn" onclick="nextPrev(1)">Submit Image Review Request</button>
+
+		      <br>
+
+		      <button type="button"  class="bluebutton"  id="prevBtn" onclick="nextPrev(-1)">Go back</button>
+		      </center>
+
+		    </div>
+		 </div>
+
+
+
+
+
   </div>
+
+
+
+
+
+
+
   <!-- Circles which indicates the steps of the form: -->
-  <div style="text-align:center;margin-top:40px;">
+<!--   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
@@ -520,7 +764,7 @@ function ques_change( id )
      <span class="step"></span>
 
 
-  </div>
+  </div> -->
 </form>
 
 <script>
@@ -543,10 +787,14 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
   //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
+  // fixStepIndicator(n)
 }
 
 function nextPrev(n) {
+
+	ques_change(0);
+
+
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -610,13 +858,14 @@ function validateForm() {
     }
   }
   // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
+  // if (valid) {
+  //   document.getElementsByClassName("step")[currentTab].className += " finish";
+  // }
   return valid; // return the valid status
 }
 
 function fixStepIndicator(n) {
+	return;
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
