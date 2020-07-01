@@ -115,6 +115,7 @@ h1 {
 	
 
 	color: #FFFFFF;
+  width: 150px;
 
 
 }
@@ -175,7 +176,7 @@ textarea.invalid {
   background: #B933F9;
 	border-radius: 60px;
 
-	box-shadow: 0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802), 0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725), 0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035), 0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275), 0px 41.7776px 33.4221px rgba(147, 120, 255, 0.0503198), 0px 100px 80px rgba(147, 120, 255, 0.07);
+/*	box-shadow: 0px 2.76726px 2.21381px rgba(147, 120, 255, 0.0196802), 0px 6.6501px 5.32008px rgba(147, 120, 255, 0.0282725), 0px 12.5216px 10.0172px rgba(147, 120, 255, 0.035), 0px 22.3363px 17.869px rgba(147, 120, 255, 0.0417275), 0px 41.7776px 33.4221px rgba(147, 120, 255, 0.0503198), 0px 100px 80px rgba(147, 120, 255, 0.07);*/
 
 	font-family: Lato;
 	font-style: normal;
@@ -188,7 +189,7 @@ textarea.invalid {
 
 	color: #FFFFFF;
 
-
+  /*background-color: white;*/
 
 
 
@@ -197,6 +198,8 @@ textarea.invalid {
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
+
+  margin-bottom: -400px;
 
 
 
@@ -291,7 +294,7 @@ button:hover {
    content: '';
    border: 2px solid #d1d7dc;
    background-color: #fff;
-   background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+   /*background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");*/
    background-repeat: no-repeat;
    background-position: 2px 3px;
    border-radius: 50%;
@@ -393,20 +396,37 @@ button:hover {
 	        {{#if this.single_option}}
 
 	         
-	        {{#each this.options}}
-		          <div class="inputGroup">
-					    <input oninput='ques_change(this.id)' id="{{../this.id}}___{{this.id}}" name="{{../this.id}}" type="radio"/>
-					    <label for="{{../this.id}}___{{this.id}}">
-					    	{{this.text}}
-					    </label>
-				 </div>
+	          {{#each this.options}}
+      		          <div class="inputGroup">
+      					    <input oninput='ques_change(this.id)' id="{{../this.id}}___{{this.id}}" name="{{../this.id}}" type="radio"/>
+      					    <label for="{{../this.id}}___{{this.id}}">
+      					    	{{this.text}}
+      					    </label>
+      				 </div>
 
-			    
-		    {{/each}}
+      			    
+      		    {{/each}}
 		   
 
 	         
 	        {{/if}}
+
+
+
+
+
+
+          {{#if this.text_option}}
+
+           
+            <input placeholder=""  id= name="tb_{{this.id}}">
+       
+
+           
+          {{/if}}
+
+
+
 
 
 	        
@@ -418,10 +438,12 @@ button:hover {
 	    <br>  
 
 	    <div style="overflow:auto;">
-		    <div style="float:right;">
+		    <div style="float:left;">
 		      <button type="button" class="bluebutton"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-		      <button type="button" class="bluebutton"  id="nextBtn" onclick="nextPrev(1)">Next</button>
 		    </div>
+        <div style="float:right;">
+          <button type="button" class="bluebutton"  id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
 		 </div>
 
 
@@ -466,35 +488,806 @@ else{
 
 
 
-data = {questions : [
+// data = {questions : [
 
-  {
-    "question" : "In which of these areas do you have pain?" ,
-    "id" : "ques1" ,
-    "multi_option":"True" , 
-    "onlyif" : "" , 
-    "options" : [
-      { "id": "op_1" , "text": "Option 1 "  } , 
-      { "id": "op_2" , "text": "Option 2 "  } , 
-       { "id": "op_3" , "text": "Option 3 "  } ,
-    ]
-  } , 
+//   {
+//     "question" : "In which of these areas do you have pain?" ,
+//     "id" : "ques1" ,
+//     "multi_option":"True" , 
+//     "onlyif" : "" , 
+//     "options" : [
+//       { "id": "op_1" , "text": "Option 1 "  } , 
+//       { "id": "op_2" , "text": "Option 2 "  } , 
+//        { "id": "op_3" , "text": "Option 3 "  } ,
+//     ]
+//   } , 
 
 
 
-  {
-    "question" : "Sample question 2 " ,
-    "id" : "ques2" ,
-    "single_option":"True" , 
-    "onlyif" : "ques1.op_2" , 
-    "options" : [
-      { "id": "op_1" , "text": "Option 222 1 "  } , 
-      { "id": "op_2" , "text": "Option 22 2 "  } , 
-      { "id": "op_3" , "text": "Option  333 3 "  } ,
-    ]
-  } , 
+//   {
+//     "question" : "Sample question 2 " ,
+//     "id" : "ques2" ,
+//     "single_option":"True" , 
+//     "onlyif" : "ques1.op_2" , 
+//     "options" : [
+//       { "id": "op_1" , "text": "Option 222 1 "  } , 
+//       { "id": "op_2" , "text": "Option 22 2 "  } , 
+//       { "id": "op_3" , "text": "Option  333 3 "  } ,
+//     ]
+//   } , 
 
-]}
+// ]}
+
+
+
+
+
+data = {questions : 
+
+
+[{
+    "text_option": true,
+    "onlyif": "",
+    "question": "Patient Name",
+    "id": "ques0",
+    "options": []
+}, {
+    "text_option": true,
+    "onlyif": "",
+    "question": "Age",
+    "id": "ques1",
+    "options": []
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Female",
+        "id": "op_0"
+    }, {
+        "text": "Male",
+        "id": "op_1"
+    }, {
+        "text": "Other",
+        "id": "op_2"
+    }],
+    "question": "Gender",
+    "single_option": true,
+    "id": "ques2"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Teeth/Jaw pain",
+        "id": "op_0"
+    }, {
+        "text": "Swelling",
+        "id": "op_1"
+    }, {
+        "text": "Gum issues",
+        "id": "op_2"
+    }, {
+        "text": "Yellow deposits on teeth / discoloring",
+        "id": "op_3"
+    }, {
+        "text": "Trauma",
+        "id": "op_4"
+    }, {
+        "text": "Dry mouth / Bad breath",
+        "id": "op_5"
+    }, {
+        "text": "Lesion",
+        "id": "op_6"
+    }],
+    "question": "Select the conditions that apply to you",
+    "multi_option": true,
+    "id": "ques3"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_0",
+    "question": " What is the level of the pain (1-10)?",
+    "id": "ques4",
+    "options": []
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Intermittent pain",
+        "id": "op_0"
+    }, {
+        "text": "Sharp tooth sensitivity",
+        "id": "op_1"
+    }, {
+        "text": "Continuous toothache",
+        "id": "op_2"
+    }, {
+        "text": "Extreme throbbing pain",
+        "id": "op_3"
+    }, {
+        "text": "Pain present only while eating",
+        "id": "op_4"
+    }, {
+        "text": "Pain at back of the jaw",
+        "id": "op_5"
+    }],
+    "question": " Choose the type of pain",
+    "single_option": true,
+    "id": "ques5"
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "There is a clicking/popping sensation in the jaw joint",
+        "id": "op_0"
+    }, {
+        "text": "You tend to clench and grind your teeth",
+        "id": "op_1"
+    }, {
+        "text": "You are not able to close/open your mouth",
+        "id": "op_2"
+    }, {
+        "text": "You have a limited capability to open your jaw",
+        "id": "op_3"
+    }],
+    "question": " Select all that apply",
+    "single_option": true,
+    "id": "ques6"
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Do you wake up at night due to pain? ",
+    "single_option": true,
+    "id": "ques7"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_0",
+    "question": " How long have you had this pain",
+    "id": "ques8",
+    "options": []
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Have you had any trauma to this area?",
+    "single_option": true,
+    "id": "ques9"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_0",
+    "question": " Are there any areas of teeth visibly missing?",
+    "id": "ques10",
+    "options": []
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Are your ears ringing?",
+    "single_option": true,
+    "id": "ques11"
+}, {
+    "onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Do you have a fever?",
+    "single_option": true,
+    "id": "ques12"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_1",
+    "question": " Since when do you have swelling?",
+    "id": "ques13",
+    "options": []
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_1",
+    "question": " How long does the pain last?",
+    "id": "ques14",
+    "options": []
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "inside your mouth",
+        "id": "op_0"
+    }, {
+        "text": "outside your mouth",
+        "id": "op_1"
+    }],
+    "question": " Where is the swelling?",
+    "single_option": true,
+    "id": "ques15"
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "a) Upper jaw (right/left/ both)",
+        "id": "op_0"
+    }, {
+        "text": "b) Upper jaw (right/left/ both)",
+        "id": "op_1"
+    }, {
+        "text": "c) Cheek/face (right/left/ both)",
+        "id": "op_2"
+    }, {
+        "text": "d) Under the tongue",
+        "id": "op_3"
+    }],
+    "question": " Please specify the location.",
+    "single_option": true,
+    "id": "ques16"
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Is there Visible discharge or bad taste associated with the swelling?",
+    "single_option": true,
+    "id": "ques17"
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "hot",
+        "id": "op_0"
+    }, {
+        "text": "cold",
+        "id": "op_1"
+    }],
+    "question": " Is the swelling hot or cold?",
+    "single_option": true,
+    "id": "ques18"
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Do you have a fever?",
+    "single_option": true,
+    "id": "ques19"
+}, {
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "eating",
+        "id": "op_0"
+    }, {
+        "text": "swallowing",
+        "id": "op_1"
+    }, {
+        "text": "breathing",
+        "id": "op_2"
+    }, {
+        "text": "I don't feel any obstruction while eating, swallowing or breathing.",
+        "id": "op_3"
+    }],
+    "question": "  Please select the activities during which you feel any obstruction",
+    "single_option": true,
+    "id": "ques20"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Are your gums bleeding?",
+    "single_option": true,
+    "id": "ques21"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Are you experiencing pain in your gums?",
+    "single_option": true,
+    "id": "ques22"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Are you experiencing swelling in your gums?",
+    "single_option": true,
+    "id": "ques23"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Is there a visible discharge or bad taste from your gums or around the teeth? ",
+    "single_option": true,
+    "id": "ques24"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Generalized",
+        "id": "op_0"
+    }, {
+        "text": "Localized",
+        "id": "op_1"
+    }, {
+        "text": "Any specified sensation mentioned here",
+        "id": "op_2"
+    }, {
+        "text": "Burning",
+        "id": "op_3"
+    }, {
+        "text": "Stinging",
+        "id": "op_4"
+    }, {
+        "text": "Sweet pain",
+        "id": "op_5"
+    }],
+    "question": " Is the issue generalized or localized (only refers to a particular area).",
+    "single_option": true,
+    "id": "ques25"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " related problems-does it hurt to touch?",
+    "single_option": true,
+    "id": "ques26"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " related problems-trauma to the area?",
+    "single_option": true,
+    "id": "ques27"
+}, {
+    "onlyif": "ques27.op_0",
+    "options": [{
+        "text": "pink",
+        "id": "op_0"
+    }, {
+        "text": "red",
+        "id": "op_1"
+    }, {
+        "text": "white",
+        "id": "op_2"
+    }, {
+        "text": "purple",
+        "id": "op_3"
+    }],
+    "question": " have your gums changed in color?",
+    "single_option": true,
+    "id": "ques28"
+}, {
+    "onlyif": "ques3.op_2",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " related problems-Receding gums",
+    "single_option": true,
+    "id": "ques29"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "yellow deposits",
+        "id": "op_0"
+    }, {
+        "text": "coloured teeth",
+        "id": "op_1"
+    }],
+    "question": "Do you complain of yellow deposits or  coloured teeth?",
+    "single_option": true,
+    "id": "ques30"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Did you suffer from any kind of trauma to your teeth or jaw?",
+    "single_option": true,
+    "id": "ques31"
+}, {
+    "text_option": true,
+    "onlyif": "ques31.op_0",
+    "question": " what kind of trauma, please explain.",
+    "id": "ques32",
+    "options": []
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "If u have suffered any kind of trauma to your teeth? did you break your teeth?",
+    "single_option": true,
+    "id": "ques33"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "dry mouth",
+        "id": "op_0"
+    }, {
+        "text": "bad breath",
+        "id": "op_1"
+    }],
+    "question": "Do you complaint of dry mouth or bad breath?",
+    "single_option": true,
+    "id": "ques34"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_6",
+    "question": "   please specify the number. ",
+    "id": "ques35",
+    "options": []
+}, {
+    "onlyif": "ques3.op_6",
+    "options": [{
+        "text": "Lip",
+        "id": "op_0"
+    }, {
+        "text": "cheek",
+        "id": "op_1"
+    }, {
+        "text": "Tongue",
+        "id": "op_2"
+    }, {
+        "text": "roof of mouth",
+        "id": "op_3"
+    }, {
+        "text": "Floor of mouth (under the tongue)",
+        "id": "op_4"
+    }, {
+        "text": "back of the throat",
+        "id": "op_5"
+    }, {
+        "text": "gums",
+        "id": "op_6"
+    }],
+    "question": "  Area of lesion?",
+    "single_option": true,
+    "id": "ques36"
+}, {
+    "onlyif": "ques3.op_6",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "  Trauma to the area? ",
+    "single_option": true,
+    "id": "ques37"
+}, {
+    "onlyif": "ques3.op_6",
+    "options": [{
+        "text": "pain",
+        "id": "op_0"
+    }, {
+        "text": "swelling",
+        "id": "op_1"
+    }, {
+        "text": "bleeding",
+        "id": "op_2"
+    }, {
+        "text": "pus discharge",
+        "id": "op_3"
+    }],
+    "question": "   Pain, swelling, bleeding from the area or pus discharge?",
+    "single_option": true,
+    "id": "ques38"
+}, {
+    "onlyif": "ques3.op_6",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "  Is area discolored?",
+    "single_option": true,
+    "id": "ques39"
+}, {
+    "text_option": true,
+    "onlyif": "ques3.op_6",
+    "question": "  How long has it been there? ",
+    "id": "ques40",
+    "options": []
+}, {
+    "onlyif": "ques3.op_6",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "  Any noticeable changes to size, shape, color? ",
+    "single_option": true,
+    "id": "ques41"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Aany known illness in the past: ",
+    "single_option": true,
+    "id": "ques42"
+}, {
+    "text_option": true,
+    "onlyif": "ques42.op_0",
+    "question": " please specify, and From how many years are you suffering from this or have suffered in the past.  ",
+    "id": "ques43",
+    "options": []
+}, {
+    "onlyif": "ques2.op_0",
+    "options": [{
+        "text": "yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " Are you pregnant",
+    "single_option": true,
+    "id": "ques44"
+}, {
+    "text_option": true,
+    "onlyif": "ques44.op_0",
+    "question": " what term are you in?",
+    "id": "ques45",
+    "options": []
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Are you taking any medication regularly?",
+    "single_option": true,
+    "id": "ques46"
+}, {
+    "text_option": true,
+    "onlyif": "ques46.op_0",
+    "question": "  What is the medication and what is for?How long have you been taking the medication for (years/months)?any present medications that you have taken in the recent past: ",
+    "id": "ques47",
+    "options": []
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Have you undergone any kind of surgery within the past 6 months to a year?",
+    "single_option": true,
+    "id": "ques48"
+}, {
+    "text_option": true,
+    "onlyif": "ques48.op_0",
+    "question": "  please mention about the surgery.",
+    "id": "ques49",
+    "options": []
+}, {
+    "onlyif": "ques2.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": " are menstrual cycles regular or not?",
+    "single_option": true,
+    "id": "ques50"
+}, {
+    "text_option": true,
+    "onlyif": "",
+    "question": "Any known allergies?",
+    "id": "ques51",
+    "options": []
+}, {
+    "text_option": true,
+    "onlyif": "",
+    "question": "Any previous dental treatment u have undertaken, and how many months back have you take the treatment?",
+    "id": "ques52",
+    "options": []
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "once",
+        "id": "op_0"
+    }, {
+        "text": "twice",
+        "id": "op_1"
+    }, {
+        "text": "more than twice",
+        "id": "op_2"
+    }],
+    "question": "Coffee/ tea how many times a day?",
+    "single_option": true,
+    "id": "ques53"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "2xdaily,",
+        "id": "op_0"
+    }, {
+        "text": "1xdaily,",
+        "id": "op_1"
+    }, {
+        "text": "Weekly,",
+        "id": "op_2"
+    }, {
+        "text": "never in life?",
+        "id": "op_3"
+    }],
+    "question": "How many times do u brush your teeth?",
+    "single_option": true,
+    "id": "ques54"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Do you clean our tongue?",
+    "single_option": true,
+    "id": "ques55"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Do you floss ? ",
+    "single_option": true,
+    "id": "ques56"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Daily,",
+        "id": "op_0"
+    }, {
+        "text": "Weekly,",
+        "id": "op_1"
+    }, {
+        "text": "Never in life?",
+        "id": "op_2"
+    }],
+    "question": "If yes then how many times?",
+    "single_option": true,
+    "id": "ques57"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Manual tooth brush",
+        "id": "op_0"
+    }, {
+        "text": "Electric tooth brush",
+        "id": "op_1"
+    }],
+    "question": "What kind of toothbrush are you using?",
+    "single_option": true,
+    "id": "ques58"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Hard bristled",
+        "id": "op_0"
+    }, {
+        "text": "Medium bristled",
+        "id": "op_1"
+    }, {
+        "text": "Soft bristled",
+        "id": "op_2"
+    }],
+    "question": "What kind of  bristles does your toothbrush  have ?",
+    "single_option": true,
+    "id": "ques59"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Do you smoke or use smokeless tobacco?",
+    "single_option": true,
+    "id": "ques60"
+}, {
+    "onlyif": "",
+    "options": [{
+        "text": "One month- three months",
+        "id": "op_0"
+    }, {
+        "text": "Every six months",
+        "id": "op_1"
+    }, {
+        "text": "Annualy",
+        "id": "op_2"
+    }, {
+        "text": "Biannualy",
+        "id": "op_3"
+    }, {
+        "text": "Never until now",
+        "id": "op_4"
+    }],
+    "question": "How often do your visit a dentist?",
+    "single_option": true,
+    "id": "ques61"
+}]
+
+}
+
 
 
 
@@ -537,7 +1330,9 @@ var q_html = templateScript(data);
 
 
 
-
+function open_record(){
+  $("#video_inp").click();
+}
 
 </script>
 
@@ -565,7 +1360,7 @@ var q_html = templateScript(data);
 
 	    <div class="whitebox"> 
 	    	  
-	    	  <img src="h2.png" width="100%">
+	    	  <img src="h1.svg" width="100%">
 
 	    	 <div style="   padding: 20px; ">
 	    	<center>
@@ -597,7 +1392,7 @@ var q_html = templateScript(data);
 
     <br> 
     <div class="whitebox">
-    	<b> First, take a 30 second video  of your teeth. </b>
+    	<img src="h3.svg" width="100%">
     </div>
 
     <br>   
@@ -615,9 +1410,20 @@ var q_html = templateScript(data);
     	 <div style="   padding: 20px; ">
 		    		
 
+          <center>
 
-		      <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
-		      <br>
+            <div style="display: none;">
+    		      <input id="video_inp" class="record_button"  oninput="this.className = ''"  name="video" type="file" accept="video/*" capture>
+    		      <br>
+            </div>
+
+            <button type="button" class="pinkbutton"   onclick="open_record()">Record a Video of  Your Teeth</button>
+
+            <br>
+
+            <button type="button"  class="bluebutton"  id="prevBtn" onclick="nextPrev(-1)">Go back</button>
+          </center>
+
 
 
 		      <script type="text/javascript">
@@ -692,7 +1498,7 @@ var q_html = templateScript(data);
 
 
 
-  <div class="tab">
+  <div class="tab" noimp="true">
 
     <h1 class="thetitle" >Do You Have Any Other Queries/Concerns?</h1>
     <br><br>
@@ -711,10 +1517,12 @@ var q_html = templateScript(data);
 
 	<br> <br>
 	<div style="overflow:auto;">
-		    <div style="float:right;">
+		    <div style="float:left;">
 		      <button type="button" class="bluebutton" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-		      <button type="button" class="bluebutton" id="nextBtn" onclick="nextPrev(1)">Next</button>
 		    </div>
+        <div style="float:right;">
+          <button type="button" class="bluebutton" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
 		 </div>
 
 
@@ -753,7 +1561,7 @@ var q_html = templateScript(data);
 	    <p><input placeholder="Email" oninput="this.className = ''" name="lname"></p>
 
 
-	   <label for="male">I have read and agree to the terms of service.</label><input type="radio" id="radio_accept"  oninput="this.className = ''"  name="do_accept" value="radio_accept">
+	<!--    <label for="male">I have read and agree to the terms of service.</label><input type="radio" id="radio_accept"  oninput="this.className = ''"  name="do_accept" value="radio_accept"> -->
 
 
 
@@ -881,7 +1689,14 @@ function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
+
   y = x[currentTab].getElementsByTagName("input");
+
+  if( x[currentTab].hasAttribute("noimp"))
+  {
+    return true;
+  }
+
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
