@@ -545,9 +545,7 @@ data = {questions :
     }, {
         "text": "Male",
         "id": "op_1"
-    }, {
-        "text": "Other",
-        "id": "op_2"
+    
     }],
     "question": "Gender",
     "single_option": true,
@@ -555,7 +553,7 @@ data = {questions :
 }, {
     "onlyif": "",
     "options": [{
-        "text": "Teeth/Jaw pain",
+        "text": "Pain in the Teeth / Jaw ",
         "id": "op_0"
     }, {
         "text": "Swelling",
@@ -564,7 +562,7 @@ data = {questions :
         "text": "Gum issues",
         "id": "op_2"
     }, {
-        "text": "Yellow deposits on teeth / discoloring",
+        "text": "Yellow deposits on teeth / Discoloring",
         "id": "op_3"
     }, {
         "text": "Trauma",
@@ -582,13 +580,13 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques3.op_0",
-    "question": " What is the level of the pain (1-10)?",
+    "question": " What is the level of the pain (on a scale of 1-10)?",
     "id": "ques4",
     "options": []
 }, {
     "onlyif": "ques3.op_0",
     "options": [{
-        "text": "Intermittent pain",
+        "text": "Intermittent (on and off) pain",
         "id": "op_0"
     }, {
         "text": "Sharp tooth sensitivity",
@@ -606,10 +604,16 @@ data = {questions :
         "text": "Pain at back of the jaw",
         "id": "op_5"
     }],
-    "question": " Choose the type of pain",
+    "question": " Select the type of pain that you are experiencing",
     "single_option": true,
     "id": "ques5"
 }, {
+    "text_option": true,
+    "onlyif": "ques3.op_1",
+    "question": " How long does the pain last?",
+    "id": "ques14",
+    "options": []
+},{
     "onlyif": "ques3.op_0",
     "options": [{
         "text": "There is a clicking/popping sensation in the jaw joint",
@@ -618,12 +622,14 @@ data = {questions :
         "text": "You tend to clench and grind your teeth",
         "id": "op_1"
     }, {
-        "text": "You are not able to close/open your mouth",
-        "id": "op_2"
-    }, {
         "text": "You have a limited capability to open your jaw",
+        "id": "op_2"
+		
+	}, {
+        "text": "None of the these apply to me",
         "id": "op_3"
     }],
+		
     "question": " Select all that apply",
     "single_option": true,
     "id": "ques6"
@@ -654,16 +660,24 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " Have you had any trauma to this area?",
+    "question": " Have you had any trauma (injury) to this area?",
     "single_option": true,
     "id": "ques9"
 }, {
-    "text_option": true,
-    "onlyif": "ques3.op_0",
-    "question": " Are there any areas of teeth visibly missing?",
-    "id": "ques10",
-    "options": []
-}, {
+
+"onlyif": "ques3.op_0",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+		}],
+    "question": " Do you see any teeth missing?",
+    "single_option": true,
+    "id": "ques10"
+}, {		
+
     "onlyif": "ques3.op_0",
     "options": [{
         "text": "Yes",
@@ -690,43 +704,37 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques3.op_1",
-    "question": " Since when do you have swelling?",
+    "question": " Since when do you have the swelling?",
     "id": "ques13",
     "options": []
 }, {
-    "text_option": true,
-    "onlyif": "ques3.op_1",
-    "question": " How long does the pain last?",
-    "id": "ques14",
-    "options": []
-}, {
     "onlyif": "ques3.op_1",
     "options": [{
-        "text": "inside your mouth",
+        "text": "a) Upper jaw",
         "id": "op_0"
     }, {
-        "text": "outside your mouth",
-        "id": "op_1"
-    }],
-    "question": " Where is the swelling?",
-    "single_option": true,
-    "id": "ques15"
-}, {
-    "onlyif": "ques3.op_1",
-    "options": [{
-        "text": "a) Upper jaw (right/left/ both)",
-        "id": "op_0"
-    }, {
-        "text": "b) Upper jaw (right/left/ both)",
+        "text": "b) Lower jaw",
         "id": "op_1"
     }, {
-        "text": "c) Cheek/face (right/left/ both)",
+        "text": "c) Cheek/face",
         "id": "op_2"
     }, {
         "text": "d) Under the tongue",
         "id": "op_3"
     }],
-    "question": " Please specify the location.",
+    "question": " Please specify the location of the swelling",
+    "single_option": true,
+    "id": "ques15"
+},{
+    "onlyif": "ques3.op_1",
+    "options": [{
+        "text": "Inside the mouth",
+        "id": "op_0"
+    }, {
+        "text": "Outside the mouth",
+        "id": "op_1"
+    }],
+    "question": " Where is the swelling?",
     "single_option": true,
     "id": "ques16"
 }, {
@@ -738,43 +746,34 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " Is there Visible discharge or bad taste associated with the swelling?",
+    "question": " Is there visible discharge or bad taste associated with the swelling?",
     "single_option": true,
     "id": "ques17"
 }, {
     "onlyif": "ques3.op_1",
     "options": [{
-        "text": "hot",
+        "text": "Hot",
         "id": "op_0"
     }, {
-        "text": "cold",
+        "text": "Cold",
         "id": "op_1"
+    }, {
+        "text": "Neither hot nor cold",
+        "id": "op_2"
     }],
     "question": " Is the swelling hot or cold?",
-    "single_option": true,
+	"single_option": true,
     "id": "ques18"
 }, {
-    "onlyif": "ques3.op_1",
+        "onlyif": "ques3.op_1",
     "options": [{
-        "text": "Yes",
+        "text": "Eating",
         "id": "op_0"
     }, {
-        "text": "No",
-        "id": "op_1"
-    }],
-    "question": " Do you have a fever?",
-    "single_option": true,
-    "id": "ques19"
-}, {
-    "onlyif": "ques3.op_1",
-    "options": [{
-        "text": "eating",
-        "id": "op_0"
-    }, {
-        "text": "swallowing",
+        "text": "Swallowing",
         "id": "op_1"
     }, {
-        "text": "breathing",
+        "text": "Breathing",
         "id": "op_2"
     }, {
         "text": "I don't feel any obstruction while eating, swallowing or breathing.",
@@ -816,7 +815,7 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " Are you experiencing swelling in your gums?",
+    "question": " Are your gums swelling?",
     "single_option": true,
     "id": "ques23"
 }, {
@@ -852,7 +851,7 @@ data = {questions :
         "text": "Sweet pain",
         "id": "op_5"
     }],
-    "question": " Is the issue generalized or localized (only refers to a particular area).",
+    "question": " Is the issue generalized or localized (only refers to a particular area)?",
     "single_option": true,
     "id": "ques25"
 }, {
@@ -864,37 +863,25 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " related problems-does it hurt to touch?",
+    "question": " Does it hurt to touch your gums?",
     "single_option": true,
     "id": "ques26"
 }, {
-    "onlyif": "ques3.op_2",
+    "onlyif": "",
     "options": [{
-        "text": "yes",
+        "text": "Pink",
         "id": "op_0"
     }, {
-        "text": "No",
-        "id": "op_1"
-    }],
-    "question": " related problems-trauma to the area?",
-    "single_option": true,
-    "id": "ques27"
-}, {
-    "onlyif": "ques27.op_0",
-    "options": [{
-        "text": "pink",
-        "id": "op_0"
-    }, {
-        "text": "red",
+        "text": "Red",
         "id": "op_1"
     }, {
-        "text": "white",
+        "text": "White",
         "id": "op_2"
     }, {
-        "text": "purple",
+        "text": "Purple",
         "id": "op_3"
     }],
-    "question": " have your gums changed in color?",
+    "question": "Have your gums changed in color?",
     "single_option": true,
     "id": "ques28"
 }, {
@@ -906,7 +893,7 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " related problems-Receding gums",
+    "question": " Do you have receding gums?",
     "single_option": true,
     "id": "ques29"
 }, {
@@ -915,10 +902,10 @@ data = {questions :
         "text": "yellow deposits",
         "id": "op_0"
     }, {
-        "text": "coloured teeth",
+        "text": "Coloured teeth",
         "id": "op_1"
     }],
-    "question": "Do you complain of yellow deposits or  coloured teeth?",
+    "question": "Do you complain of yellow deposits or colored teeth?",
     "single_option": true,
     "id": "ques30"
 }, {
@@ -936,21 +923,9 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques31.op_0",
-    "question": " what kind of trauma, please explain.",
+    "question": " What kind of trauma, please explain.",
     "id": "ques32",
     "options": []
-}, {
-    "onlyif": "",
-    "options": [{
-        "text": "Yes",
-        "id": "op_0"
-    }, {
-        "text": "No",
-        "id": "op_1"
-    }],
-    "question": "If u have suffered any kind of trauma to your teeth? did you break your teeth?",
-    "single_option": true,
-    "id": "ques33"
 }, {
     "onlyif": "",
     "options": [{
@@ -960,40 +935,34 @@ data = {questions :
         "text": "bad breath",
         "id": "op_1"
     }],
-    "question": "Do you complaint of dry mouth or bad breath?",
+    "question": "Do you complain of dry mouth or bad breath?",
     "single_option": true,
     "id": "ques34"
-}, {
-    "text_option": true,
-    "onlyif": "ques3.op_6",
-    "question": "   please specify the number. ",
-    "id": "ques35",
-    "options": []
 }, {
     "onlyif": "ques3.op_6",
     "options": [{
         "text": "Lip",
         "id": "op_0"
     }, {
-        "text": "cheek",
+        "text": "Cheek",
         "id": "op_1"
     }, {
         "text": "Tongue",
         "id": "op_2"
     }, {
-        "text": "roof of mouth",
+        "text": "Roof of mouth",
         "id": "op_3"
     }, {
         "text": "Floor of mouth (under the tongue)",
         "id": "op_4"
     }, {
-        "text": "back of the throat",
+        "text": "Back of the throat",
         "id": "op_5"
     }, {
-        "text": "gums",
+        "text": "Gums",
         "id": "op_6"
     }],
-    "question": "  Area of lesion?",
+    "question": " Which area is the lesion apparent?",
     "single_option": true,
     "id": "ques36"
 }, {
@@ -1005,25 +974,25 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "  Trauma to the area? ",
+    "question": "Is there any trauma to the area? ",
     "single_option": true,
     "id": "ques37"
 }, {
     "onlyif": "ques3.op_6",
     "options": [{
-        "text": "pain",
+        "text": "Pain",
         "id": "op_0"
     }, {
-        "text": "swelling",
+        "text": "Swelling",
         "id": "op_1"
     }, {
-        "text": "bleeding",
+        "text": "Bleeding",
         "id": "op_2"
     }, {
-        "text": "pus discharge",
+        "text": "Pus discharge",
         "id": "op_3"
     }],
-    "question": "   Pain, swelling, bleeding from the area or pus discharge?",
+    "question": "Is there any pain, swelling, bleeding from the area or pus discharge?",
     "single_option": true,
     "id": "ques38"
 }, {
@@ -1065,19 +1034,19 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "Aany known illness in the past: ",
+    "question": "Have you had any known illnesses in the past?",
     "single_option": true,
     "id": "ques42"
 }, {
     "text_option": true,
     "onlyif": "ques42.op_0",
-    "question": " please specify, and From how many years are you suffering from this or have suffered in the past.  ",
+    "question": " Please specify the illness and from how many years are you suffering from this/ have suffered in the past.",
     "id": "ques43",
     "options": []
 }, {
     "onlyif": "ques2.op_0",
     "options": [{
-        "text": "yes",
+        "text": "Yes",
         "id": "op_0"
     }, {
         "text": "No",
@@ -1107,7 +1076,7 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques46.op_0",
-    "question": "  What is the medication and what is for?How long have you been taking the medication for (years/months)?any present medications that you have taken in the recent past: ",
+    "question": "  What is the medication and what is for? How long have you been taking the medication for?",
     "id": "ques47",
     "options": []
 }, {
@@ -1125,7 +1094,7 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques48.op_0",
-    "question": "  please mention about the surgery.",
+    "question": "  Please provide details about the surgery.",
     "id": "ques49",
     "options": []
 }, {
@@ -1137,19 +1106,19 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": " are menstrual cycles regular or not?",
+    "question": " Are your menstrual cycles regular or not?",
     "single_option": true,
     "id": "ques50"
 }, {
     "text_option": true,
     "onlyif": "",
-    "question": "Any known allergies?",
+    "question": "Do you have any known allergies?",
     "id": "ques51",
     "options": []
 }, {
     "text_option": true,
     "onlyif": "",
-    "question": "Any previous dental treatment u have undertaken, and how many months back have you take the treatment?",
+    "question": "Do you have any previous dental treatment you have undertaken, and when did the treatmetn occur?",
     "id": "ques52",
     "options": []
 }, {
@@ -1158,31 +1127,28 @@ data = {questions :
         "text": "once",
         "id": "op_0"
     }, {
-        "text": "twice",
+        "text": "twice or more",
         "id": "op_1"
     }, {
-        "text": "more than twice",
+        "text": "I never drink coffee or tea",
         "id": "op_2"
     }],
-    "question": "Coffee/ tea how many times a day?",
+    "question": "How often in a day do you drink coffee/tea?",
     "single_option": true,
     "id": "ques53"
 }, {
     "onlyif": "",
     "options": [{
-        "text": "2xdaily,",
+        "text": "Twice a day",
         "id": "op_0"
     }, {
-        "text": "1xdaily,",
+        "text": "Once a day,",
         "id": "op_1"
     }, {
-        "text": "Weekly,",
-        "id": "op_2"
-    }, {
-        "text": "never in life?",
+        "text": "Not every day",
         "id": "op_3"
     }],
-    "question": "How many times do u brush your teeth?",
+    "question": "How often do you brush your teeth?",
     "single_option": true,
     "id": "ques54"
 }, {
@@ -1206,22 +1172,22 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "Do you floss ? ",
+    "question": "Do you floss? ",
     "single_option": true,
     "id": "ques56"
 }, {
     "onlyif": "",
     "options": [{
-        "text": "Daily,",
+        "text": "Daily",
         "id": "op_0"
     }, {
-        "text": "Weekly,",
+        "text": "Atleast once a week,",
         "id": "op_1"
     }, {
-        "text": "Never in life?",
+        "text": "I don't floss",
         "id": "op_2"
     }],
-    "question": "If yes then how many times?",
+    "question": "How frequently do you floss?",
     "single_option": true,
     "id": "ques57"
 }, {
@@ -1248,7 +1214,7 @@ data = {questions :
         "text": "Soft bristled",
         "id": "op_2"
     }],
-    "question": "What kind of  bristles does your toothbrush  have ?",
+    "question": "What kind of  bristles does your toothbrush have?",
     "single_option": true,
     "id": "ques59"
 }, {
@@ -1266,7 +1232,7 @@ data = {questions :
 }, {
     "onlyif": "",
     "options": [{
-        "text": "One month- three months",
+        "text": "Every three months or even more frequently",
         "id": "op_0"
     }, {
         "text": "Every six months",
@@ -1275,10 +1241,7 @@ data = {questions :
         "text": "Annualy",
         "id": "op_2"
     }, {
-        "text": "Biannualy",
-        "id": "op_3"
-    }, {
-        "text": "Never until now",
+        "text": "Less frequently than once a year",
         "id": "op_4"
     }],
     "question": "How often do your visit a dentist?",
@@ -1403,7 +1366,7 @@ function open_record(){
 
     	 <br><br>
 
-    	 <iframe width="100%"   src="https://www.youtube.com/embed/TCzEk-Wv8R0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    	 <iframe width="100%"   src="https://www.youtube.com/embed/glP78Bp-rdE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
@@ -1529,6 +1492,77 @@ function open_record(){
 
 
   </div>
+
+
+
+
+
+
+
+    <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+
+
+    <h1 class="thetitle">User Terms of Service – Dental Smarts</h1>
+    <br> <br>
+  
+    <div class="whitebox">
+
+      <b> Please read and agree to the terms of service below. </b>
+
+      <br> <br>
+
+       <textarea   name="message" rows="10" readonly >
+         
+Our diagnosis lacks 100% certainty, due to the lack of information we can gather. 
+        
+Our dentists can only provide a provisional diagnosis – a diagnosis that lacks 100% certainty due to a lack of information. Additionally, an image consult may help identify certain issues, but not all issues. For a complete/final diagnosis, please schedule an in-person appointment with your dentist. Our app does not serve as a substitute for professional dental advice, diagnosis, or treatment. It is intended to motivate users to take better care of their oral health and visit their dentist more 
+frequently.
+
+Our dentists are protected from liability. 
+
+Dentists who provide the provisional diagnosis via the Dental Smarts app are not held liable for any inexact information provided. Due to the lack of information that we can gather from a video of the mouth, our dentists cannot provide a complete/final diagnosis. Visit your dentist for a complete diagnosis.
+
+Some of the data we collect will be used to build machine learning models for predictive analysis.
+
+The video of your teeth, questionnaire responses and dental report cards will be stored on the Dental Smarts server for research and development purposes. This information will remain confidential and will not be shared with any 3rd party. This data is accessible to the user as long as their account is active. This data will be used to develop and train artificial intelligence models that can identify dental problems based on images of teeth and questionnaire responses.
+
+We respect your privacy and will not share your information with any 3rd party
+
+Any basic user information that is provided while creating the user profile, such as name, age, etc., will be kept private in our database and will not be shared with any 3rd party.
+
+You agree to send us a video of ONLY your teeth. Inappropriate, unlawful, or videos that represent any of the descriptions noted below are strictly prohibited.
+
+You are not allowed to submit videos that contain expressions of hate, abuse, offensive images or conduct, obscenity, pornography, sexually explicit or any material that could give rise to any civil or criminal liability under applicable law or regulations.
+
+
+       </textarea>
+
+
+    </div>
+
+
+    <div style="overflow:auto;">
+        <div style=" ">
+          
+          <center>
+            <br>
+          <button type="button" class="pinkbutton"   id="nextBtn" onclick="nextPrev(1)">I Agree</button>
+
+          <br>
+
+          <button type="button"  class="bluebutton"  id="prevBtn" onclick="nextPrev(-1)">Go back</button>
+          </center>
+
+        </div>
+     </div>
+
+
+
+
+
+  </div>
+
 
 
 
