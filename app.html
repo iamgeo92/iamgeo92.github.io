@@ -573,11 +573,30 @@ data = {questions :
     }, {
         "text": "Lesion",
         "id": "op_6"
-    }],
+    },
+    {
+        "text": "None of the above",
+        "id": "op_7"
+    } , 
+    {
+        "text": "Other",
+        "id": "op_8"
+    }  ],
     "question": "Select the conditions that apply to you",
     "multi_option": true,
     "id": "ques3"
-}, {
+}, 
+
+
+{
+    "text_option": true,
+    "onlyif": "ques3.op_8",
+    "question": "Describe the conditions",
+    "id": "ques565",
+    "options": []
+}, 
+
+{
     "text_option": true,
     "onlyif": "ques3.op_0",
     "question": " What is the level of the pain (on a scale of 1-10)?",
@@ -867,7 +886,7 @@ data = {questions :
     "single_option": true,
     "id": "ques26"
 }, {
-    "onlyif": "",
+    "onlyif": "ques3.op_2",
     "options": [{
         "text": "Pink",
         "id": "op_0"
@@ -897,7 +916,7 @@ data = {questions :
     "single_option": true,
     "id": "ques29"
 }, {
-    "onlyif": "",
+    "onlyif": "ques3.op_3",
     "options": [{
         "text": "yellow deposits",
         "id": "op_0"
@@ -909,7 +928,7 @@ data = {questions :
     "single_option": true,
     "id": "ques30"
 }, {
-    "onlyif": "",
+    "onlyif": "ques3.op_2",
     "options": [{
         "text": "Yes",
         "id": "op_0"
@@ -926,18 +945,6 @@ data = {questions :
     "question": " What kind of trauma, please explain.",
     "id": "ques32",
     "options": []
-}, {
-    "onlyif": "",
-    "options": [{
-        "text": "dry mouth",
-        "id": "op_0"
-    }, {
-        "text": "bad breath",
-        "id": "op_1"
-    }],
-    "question": "Do you complain of dry mouth or bad breath?",
-    "single_option": true,
-    "id": "ques34"
 }, {
     "onlyif": "ques3.op_6",
     "options": [{
@@ -1040,7 +1047,7 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques42.op_0",
-    "question": " Please specify the illness and from how many years are you suffering from this/ have suffered in the past.",
+    "question": " Please specify the illness and the duration.",
     "id": "ques43",
     "options": []
 }, {
@@ -1076,7 +1083,7 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques46.op_0",
-    "question": "  What is the medication and what is for? How long have you been taking the medication for?",
+    "question": "How long have you been taking the medication for?",
     "id": "ques47",
     "options": []
 }, {
@@ -1088,13 +1095,13 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "Have you undergone any kind of surgery within the past 6 months to a year?",
+    "question": "Have you undergone any kind of surgery within the past a year?",
     "single_option": true,
     "id": "ques48"
 }, {
     "text_option": true,
     "onlyif": "ques48.op_0",
-    "question": "  Please provide details about the surgery.",
+    "question": "What was the surgery for?",
     "id": "ques49",
     "options": []
 }, {
@@ -1110,36 +1117,47 @@ data = {questions :
     "single_option": true,
     "id": "ques50"
 }, {
-    "text_option": true,
     "onlyif": "",
+    "single_option": true,
     "question": "Do you have any known allergies?",
     "id": "ques51",
-    "options": []
-}, {
-    "text_option": true,
-    "onlyif": "",
-    "question": "Do you have any previous dental treatment you have undertaken, and when did the treatmetn occur?",
-    "id": "ques52",
-    "options": []
-}, {
-    "onlyif": "",
     "options": [{
-        "text": "once",
+        "text": "Yes",
         "id": "op_0"
     }, {
-        "text": "twice or more",
+        "text": "No",
         "id": "op_1"
-    }, {
-        "text": "I never drink coffee or tea",
-        "id": "op_2"
-    }],
-    "question": "How often in a day do you drink coffee/tea?",
-    "single_option": true,
-    "id": "ques53"
+    }]
 }, {
+    "text_option": true,
+    "onlyif": "ques51.op_0",
+    "question": "Please list out the allergies?",
+    "id": "ques499",
+    "options": []
+},
+{
+    "onlyif": "",
+    "single_option": true,
+    "question": "Have you previously had any dental procedures done?",
+    "id": "ques511",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }]
+},
+{
+    "text_option": true,
+    "onlyif": "ques511.op_0",
+    "question": "What was the treatment and when did it occur?",
+    "id": "ques52",
+    "options": []
+},  {
     "onlyif": "",
     "options": [{
-        "text": "Twice a day",
+        "text": "Twice of more a day",
         "id": "op_0"
     }, {
         "text": "Once a day,",
@@ -1151,19 +1169,7 @@ data = {questions :
     "question": "How often do you brush your teeth?",
     "single_option": true,
     "id": "ques54"
-}, {
-    "onlyif": "",
-    "options": [{
-        "text": "Yes",
-        "id": "op_0"
-    }, {
-        "text": "No",
-        "id": "op_1"
-    }],
-    "question": "Do you clean our tongue?",
-    "single_option": true,
-    "id": "ques55"
-}, {
+},  {
     "onlyif": "",
     "options": [{
         "text": "Yes",
@@ -1190,34 +1196,7 @@ data = {questions :
     "question": "How frequently do you floss?",
     "single_option": true,
     "id": "ques57"
-}, {
-    "onlyif": "",
-    "options": [{
-        "text": "Manual tooth brush",
-        "id": "op_0"
-    }, {
-        "text": "Electric tooth brush",
-        "id": "op_1"
-    }],
-    "question": "What kind of toothbrush are you using?",
-    "single_option": true,
-    "id": "ques58"
-}, {
-    "onlyif": "",
-    "options": [{
-        "text": "Hard bristled",
-        "id": "op_0"
-    }, {
-        "text": "Medium bristled",
-        "id": "op_1"
-    }, {
-        "text": "Soft bristled",
-        "id": "op_2"
-    }],
-    "question": "What kind of  bristles does your toothbrush have?",
-    "single_option": true,
-    "id": "ques59"
-}, {
+},  {
     "onlyif": "",
     "options": [{
         "text": "Yes",
@@ -1244,7 +1223,7 @@ data = {questions :
         "text": "Less frequently than once a year",
         "id": "op_4"
     }],
-    "question": "How often do your visit a dentist?",
+    "question": "How often do you visit a dentist?",
     "single_option": true,
     "id": "ques61"
 }]
@@ -1514,22 +1493,20 @@ function open_record(){
 
        <textarea   name="message" rows="10" readonly >
          
-Our diagnosis lacks 100% certainty, due to the lack of information we can gather. 
         
-Our dentists can only provide a provisional diagnosis – a diagnosis that lacks 100% certainty due to a lack of information. Additionally, an image consult may help identify certain issues, but not all issues. For a complete/final diagnosis, please schedule an in-person appointment with your dentist. Our app does not serve as a substitute for professional dental advice, diagnosis, or treatment. It is intended to motivate users to take better care of their oral health and visit their dentist more 
+1) Our dentists can only provide a provisional diagnosis – a diagnosis that lacks 100% certainty due to a lack of information. Additionally, an image consult may help identify certain issues, but not all issues. For a complete/final diagnosis, please schedule an in-person appointment with your dentist. Our app does not serve as a substitute for professional dental advice, diagnosis, or treatment. It is intended to motivate users to take better care of their oral health and visit their dentist more 
 frequently.
 
-Our dentists are protected from liability. 
 
-Dentists who provide the provisional diagnosis via the Dental Smarts app are not held liable for any inexact information provided. Due to the lack of information that we can gather from a video of the mouth, our dentists cannot provide a complete/final diagnosis. Visit your dentist for a complete diagnosis.
+2) Neither DentalSmarts.co not dentists  who provide the provisional diagnosis via the Dental Smarts app are not held liable for any inexact information provided. Due to the lack of information that we can gather from a video of the mouth, our dentists cannot provide a complete/final diagnosis. Visit your dentist for a complete diagnosis.
 
 Some of the data we collect will be used to build machine learning models for predictive analysis.
 
-The video of your teeth, questionnaire responses and dental report cards will be stored on the Dental Smarts server for research and development purposes. This information will remain confidential and will not be shared with any 3rd party. This data is accessible to the user as long as their account is active. This data will be used to develop and train artificial intelligence models that can identify dental problems based on images of teeth and questionnaire responses.
+3) The video of your teeth, questionnaire responses and dental report cards will be stored on the Dental Smarts server for research and development purposes. This information will remain confidential and will not be shared with any 3rd party. This data is accessible to the user as long as their account is active. This data will be used to develop and train artificial intelligence models that can identify dental problems based on images of teeth and questionnaire responses.
 
 We respect your privacy and will not share your information with any 3rd party
 
-Any basic user information that is provided while creating the user profile, such as name, age, etc., will be kept private in our database and will not be shared with any 3rd party.
+Any basic user information that is provided while creating the user profile, such as name, age, etc., will be kept private in our database and will not be shared with any 3rd party.
 
 You agree to send us a video of ONLY your teeth. Inappropriate, unlawful, or videos that represent any of the descriptions noted below are strictly prohibited.
 
