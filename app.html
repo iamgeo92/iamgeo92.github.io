@@ -1355,13 +1355,36 @@ function open_record(){
 
 		        document.getElementById('video_inp').onchange = setFileInfo;
 
+            vid_b64_glob = "";
+
 		        function setFileInfo(){
+
+
+
+
+
+
 		          if( document.getElementById('video_inp').files[0].size > 25700240 )
 		          {
 		              alert( "Video too large. Please ensure the video is less than 30 seconds.");
 		              document.getElementById('video_inp').value = '';
 		          }
 		          else{
+
+
+                  var file = document.querySelector('input[type=file]').files[0];
+                  var reader = new FileReader();
+
+                  reader.addEventListener("load", function () {
+                    // convert image file to base64 string
+                   vid_b64_glob = ( reader.result) ;
+                  }, false);
+
+                  if (file) {
+                    reader.readAsDataURL(file);
+                  }
+
+
 		            // alert("all good");
 		            nextPrev(1);
 		          }
@@ -1703,7 +1726,7 @@ function validateForm() {
 
 function get_ques_ans()
 {
-   var ret_str = "";
+   var ret_str = "<p> \n ";
 
     for( var i=0 ; i< questions.length ; i++ )
     {
@@ -1712,13 +1735,13 @@ function get_ques_ans()
 
 
         var ques_text  = document.querySelectorAll('h3[for="'+  qid   +'"]')[0].innerHTML.trim() ; 
-        ret_str += ques_text + "\n";
+        ret_str += ques_text + " <br> \n";
 
         // text op 
         var el = document.querySelectorAll('input[name="tb_'+  qid   +'"]');
         if( el.length> 0)
         {
-          ret_str += "-> " + el[0].value.trim() + "\n";
+          ret_str += "-> " + el[0].value.trim() + " <br> \n";
         }
 
 
@@ -1730,21 +1753,29 @@ function get_ques_ans()
 
           if(is_checked){
             var op_text  = document.querySelectorAll('label[for="'+  qid + "___" + oid  +'"]')[0].innerHTML.trim() ; 
-            ret_str += "-> " + op_text + "\n";
+            ret_str += "-> " + op_text + " <br> \n";
           }
           
         }
 
-        ret_str += "=========== \n ";
+        ret_str += "=========== <br>  \n ";
 
     }
 
-    ret_str += "name -> " +document.querySelectorAll('input[name="fname"]')[0].value.trim() + "\n";
-    ret_str += "email -> " +document.querySelectorAll('input[name="emaill"]')[0].value.trim() + "\n";
-    ret_str += "phone -> " +document.querySelectorAll('input[name="phonee"]')[0].value.trim() + "\n";
-    ret_str += "msg title -> " +document.querySelectorAll('input[name="msg_title"]')[0].value.trim() + "\n";
+    ret_str += "name -> " +document.querySelectorAll('input[name="fname"]')[0].value.trim() + " <br> \n";
+    ret_str += "email -> " +document.querySelectorAll('input[name="emaill"]')[0].value.trim() + " <br> \n";
+    ret_str += "phone -> " +document.querySelectorAll('input[name="phonee"]')[0].value.trim() + " <br> \n";
+    ret_str += "msg title -> " +document.querySelectorAll('input[name="msg_title"]')[0].value.trim() + " <br> \n";
 
-    ret_str += "msg content-> " +document.querySelectorAll('[id="msg_content"]')[0].value.trim() + "\n";
+    ret_str += "msg content-> " +document.querySelectorAll('[id="msg_content"]')[0].value.trim() + " <br> \n";
+
+    ret_str += "<p>";
+
+
+    ret_str += '<video autoplay controls src="'+vid_b64_glob+'"></video>'
+
+    
+
 
 
     return ret_str;
