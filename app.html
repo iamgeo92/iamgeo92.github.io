@@ -376,7 +376,7 @@ button:hover {
 
 	    	<br>  
 
-	      <h3 class="qtitle">{{this.question}}</h3>
+	      <h3 for="{{this.id}}" class="qtitle">{{this.question}}</h3>
 
 	       <br>  
 
@@ -419,7 +419,7 @@ button:hover {
           {{#if this.text_option}}
 
            
-            <input placeholder=""  id= name="tb_{{this.id}}">
+            <input placeholder=""   name="tb_{{this.id}}">
        
 
            
@@ -1432,9 +1432,9 @@ function open_record(){
 
 	    <br><br>
 
-	    <p><input placeholder="Title" oninput="this.className = ''" name="title"></p>
+	    <p><input placeholder="Title" oninput="this.className = ''" name="msg_title"></p>
 
-	    <textarea   name="message" rows="10" placeholder="Your Message"></textarea>
+	    <textarea   name="message" rows="10" id="msg_content" placeholder="Your Message"></textarea>
 	    
 	    
 	</div>
@@ -1697,6 +1697,68 @@ function validateForm() {
   // }
   return valid; // return the valid status
 }
+
+
+
+
+function get_ques_ans()
+{
+   var ret_str = "";
+
+    for( var i=0 ; i< questions.length ; i++ )
+    {
+        var qid = questions[i].id; 
+        responses[qid] = {};
+
+
+        var ques_text  = document.querySelectorAll('h3[for="'+  qid   +'"]')[0].innerHTML.trim() ; 
+        ret_str += ques_text + "\n";
+
+        // text op 
+        var el = document.querySelectorAll('input[name="tb_'+  qid   +'"]');
+        if( el.length> 0)
+        {
+          ret_str += "-> " + el[0].value.trim() + "\n";
+        }
+
+
+
+        for( var j=0 ; j< questions[i]['options'].length ; j++ )
+        {
+          var oid = questions[i]['options'][j]['id'];
+          var is_checked = document.getElementById( qid + "___" + oid ).checked ; 
+
+          if(is_checked){
+            var op_text  = document.querySelectorAll('label[for="'+  qid + "___" + oid  +'"]')[0].innerHTML.trim() ; 
+            ret_str += "-> " + op_text + "\n";
+          }
+          
+        }
+
+        ret_str += "=========== \n ";
+
+    }
+
+    ret_str += "name -> " +document.querySelectorAll('input[name="fname"]')[0].value.trim() + "\n";
+    ret_str += "email -> " +document.querySelectorAll('input[name="emaill"]')[0].value.trim() + "\n";
+    ret_str += "phone -> " +document.querySelectorAll('input[name="phonee"]')[0].value.trim() + "\n";
+    ret_str += "msg title -> " +document.querySelectorAll('input[name="msg_title"]')[0].value.trim() + "\n";
+
+    ret_str += "msg content-> " +document.querySelectorAll('[id="msg_content"]')[0].value.trim() + "\n";
+
+
+    return ret_str;
+}
+
+
+
+
+
+
+ 
+
+
+
 
 function fixStepIndicator(n) {
 	return;
