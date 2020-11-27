@@ -876,16 +876,19 @@ data = {questions :
 }, {
     "onlyif": "ques3.op_2",
     "options": [{
-        "text": "Pink",
+        "text": "Yes, they are pink",
         "id": "op_0"
     }, {
-        "text": "Red",
+        "text": "Yes, they are more red",
         "id": "op_1"
     }, {
-        "text": "White",
+        "text": "Yes, they are white",
         "id": "op_2"
     }, {
-        "text": "Purple",
+        "text": "Yes, they are purple",
+        "id": "op_3"
+    },{
+        "text": "No, they have not changed color",
         "id": "op_3"
     }],
     "question": "Have your gums changed in color?",
@@ -904,18 +907,6 @@ data = {questions :
     "single_option": true,
     "id": "ques29"
 }, {
-    "onlyif": "ques3.op_2",
-    "options": [{
-        "text": "Yes",
-        "id": "op_0"
-    }, {
-        "text": "No",
-        "id": "op_1"
-    }],
-    "question": "Did you suffer from any kind of trauma to your teeth or jaw?",
-    "single_option": true,
-    "id": "ques30"
-}, {
     "onlyif": "ques3.op_3",
     "options": [{
         "text": "Yellow deposits",
@@ -926,7 +917,37 @@ data = {questions :
     }],
     "question": "Do you complain of yellow deposits or colored teeth?",
     "single_option": true,
+    "id": "ques30"
+}, {
+    "onlyif": "ques3.op_4",
+    "options": [{
+        "text": "Yes",
+        "id": "op_0"
+    }, {
+        "text": "No",
+        "id": "op_1"
+    }],
+    "question": "Did you suffer from any kind of trauma to your teeth or jaw?",
+    "single_option": true,
     "id": "ques31"
+}, {
+    "text_option": true,
+    "onlyif": "ques31.op_0",
+    "question": " What kind of trauma? Please explain.",
+    "id": "ques32",
+    "options": []
+}, {
+    "onlyif": "ques3.op_5",
+    "options": [{
+        "text": "dry mouth",
+        "id": "op_0"
+    }, {
+        "text": "bad breath",
+        "id": "op_1"
+    }],
+    "question": "Do you complain of dry mouth or bad breath?",
+    "single_option": true,
+    "id": "ques34"
 }, {
     "onlyif": "ques3.op_6",
     "options": [{
@@ -939,10 +960,10 @@ data = {questions :
         "text": "Tongue",
         "id": "op_2"
     }, {
-        "text": "Roof of mouth",
+        "text": "Roof of the mouth",
         "id": "op_3"
     }, {
-        "text": "Floor of mouth (under the tongue)",
+        "text": "Floor of the mouth (under the tongue)",
         "id": "op_4"
     }, {
         "text": "Back of the throat",
@@ -980,6 +1001,9 @@ data = {questions :
     }, {
         "text": "Pus discharge",
         "id": "op_3"
+    },{
+        "text": "None of the above",
+        "id": "op_4"
     }],
     "question": "Is there any pain, swelling, bleeding from the area or pus discharge?",
     "single_option": true,
@@ -1011,7 +1035,7 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "  Any noticeable changes to size, shape, color? ",
+    "question": "  Any noticeable changes to the size, shape or color of the lesion? ",
     "single_option": true,
     "id": "ques41"
 }, {
@@ -1023,7 +1047,7 @@ data = {questions :
         "text": "No",
         "id": "op_1"
     }],
-    "question": "Have you had any known illnesses in the past?",
+    "question": "Have you had any illnesses in the past?",
     "single_option": true,
     "id": "ques42"
 }, {
@@ -1133,7 +1157,7 @@ data = {questions :
 {
     "text_option": true,
     "onlyif": "ques511.op_0",
-    "question": "What was the treatment and when did it occur?",
+    "question": "What was the procedure and when did it occur?",
     "id": "ques52",
     "options": []
 },  {
