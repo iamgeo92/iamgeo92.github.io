@@ -528,7 +528,7 @@ data = {questions :
 [{
     "text_option": true,
     "onlyif": "",
-    "question": "Patient Name",
+    "question": "Patient name",
     "id": "ques0",
     "options": []
 }, {
@@ -553,7 +553,7 @@ data = {questions :
 }, {
     "onlyif": "",
     "options": [{
-        "text": "Pain in the Teeth / Jaw ",
+        "text": "Pain in the teeth / jaw ",
         "id": "op_0"
     }, {
         "text": "Swelling",
@@ -582,7 +582,7 @@ data = {questions :
         "text": "Other",
         "id": "op_8"
     }  ],
-    "question": "Select the conditions that apply to you",
+    "question": "Select the conditions that apply to you.",
     "multi_option": true,
     "id": "ques3"
 }, 
@@ -591,7 +591,7 @@ data = {questions :
 {
     "text_option": true,
     "onlyif": "ques3.op_8",
-    "question": "Describe the conditions",
+    "question": "Describe the condition you are experiencing.",
     "id": "ques565",
     "options": []
 }, 
@@ -623,12 +623,12 @@ data = {questions :
         "text": "Pain at back of the jaw",
         "id": "op_5"
     }],
-    "question": " Select the type of pain that you are experiencing",
+    "question": " Select the type of pain that you are experiencing.",
     "single_option": true,
     "id": "ques5"
 }, {
     "text_option": true,
-    "onlyif": "ques3.op_1",
+    "onlyif": "ques3.op_0",
     "question": " How long does the pain last?",
     "id": "ques14",
     "options": []
@@ -649,7 +649,7 @@ data = {questions :
         "id": "op_3"
     }],
 		
-    "question": " Select all that apply",
+    "question": " Select all that apply.",
     "single_option": true,
     "id": "ques6"
 }, {
@@ -667,7 +667,7 @@ data = {questions :
 }, {
     "text_option": true,
     "onlyif": "ques3.op_0",
-    "question": " How long have you had this pain",
+    "question": " How long have you had this pain?",
     "id": "ques8",
     "options": []
 }, {
@@ -741,7 +741,7 @@ data = {questions :
         "text": "d) Under the tongue",
         "id": "op_3"
     }],
-    "question": " Please specify the location of the swelling",
+    "question": " Please specify the location of the swelling.",
     "single_option": true,
     "id": "ques15"
 },{
@@ -753,7 +753,7 @@ data = {questions :
         "text": "Outside the mouth",
         "id": "op_1"
     }],
-    "question": " Where is the swelling?",
+    "question": " Is the swelling inside or outside the mouth?",
     "single_option": true,
     "id": "ques16"
 }, {
@@ -857,18 +857,6 @@ data = {questions :
     }, {
         "text": "Localized",
         "id": "op_1"
-    }, {
-        "text": "Any specified sensation mentioned here",
-        "id": "op_2"
-    }, {
-        "text": "Burning",
-        "id": "op_3"
-    }, {
-        "text": "Stinging",
-        "id": "op_4"
-    }, {
-        "text": "Sweet pain",
-        "id": "op_5"
     }],
     "question": " Is the issue generalized or localized (only refers to a particular area)?",
     "single_option": true,
@@ -916,18 +904,6 @@ data = {questions :
     "single_option": true,
     "id": "ques29"
 }, {
-    "onlyif": "ques3.op_3",
-    "options": [{
-        "text": "yellow deposits",
-        "id": "op_0"
-    }, {
-        "text": "Coloured teeth",
-        "id": "op_1"
-    }],
-    "question": "Do you complain of yellow deposits or colored teeth?",
-    "single_option": true,
-    "id": "ques30"
-}, {
     "onlyif": "ques3.op_2",
     "options": [{
         "text": "Yes",
@@ -938,13 +914,19 @@ data = {questions :
     }],
     "question": "Did you suffer from any kind of trauma to your teeth or jaw?",
     "single_option": true,
-    "id": "ques31"
+    "id": "ques30"
 }, {
-    "text_option": true,
-    "onlyif": "ques31.op_0",
-    "question": " What kind of trauma, please explain.",
-    "id": "ques32",
-    "options": []
+    "onlyif": "ques3.op_3",
+    "options": [{
+        "text": "Yellow deposits",
+        "id": "op_0"
+    }, {
+        "text": "Colored teeth",
+        "id": "op_1"
+    }],
+    "question": "Do you complain of yellow deposits or colored teeth?",
+    "single_option": true,
+    "id": "ques31"
 }, {
     "onlyif": "ques3.op_6",
     "options": [{
