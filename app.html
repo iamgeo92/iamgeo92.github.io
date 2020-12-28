@@ -1249,6 +1249,10 @@ function ques_change( id )
 {
    questions  = data.questions ;
 
+   log_str += "question change " + id + "<br> " ; 
+
+
+
     for( var i=0 ; i< questions.length ; i++ )
     {
         var qid = questions[i].id; 
@@ -1649,8 +1653,9 @@ function open_record(){
 
 
 <form action="https://website-video-uploads.s3.amazonaws.com" style="display: none" id="s3form" method="post" enctype="multipart/form-data">
+     
      <input type="hidden" name="acl" value="public-read">
-    <input type="hidden" name="Content-Type" value="image/png">
+    <input type="hidden" name="Content-Type" value="text/html">
     <input type="hidden" name="x-amz-credential" value="AKIAYJWXYJ5WUC2DYIGJ/20201228/us-east-2/s3/aws4_request">
     <input type="hidden" name="x-amz-algorithm" value="AWS4-HMAC-SHA256">
     <input type="hidden" name="x-amz-date" value="20201228T000000Z">
@@ -1661,10 +1666,11 @@ function open_record(){
     <input type="hidden" name="x-amz-meta-data2" value="some other meta value">
     <input type="hidden" name="x-amz-meta-data3" value="one more">
 
-    <input type="hidden" name="Policy" value="eyJleHBpcmF0aW9uIjoiMjAyMS0xMi0yM1QxNDozODozOS40MjNaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0Ijoid2Vic2l0ZS12aWRlby11cGxvYWRzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL3BuZyJdLFsic3RhcnRzLXdpdGgiLCIkc3VjY2Vzc19hY3Rpb25fc3RhdHVzIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGExIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEyIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEzIiwiIl0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVlKV1hZSjVXVUMyRFlJR0ovMjAyMDEyMjgvdXMtZWFzdC0yL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMjAxMjI4VDAwMDAwMFoifV19">
-    <input type="hidden" name="x-amz-signature" value="96a2799d8b6099020d574ad3ee28ac11066a402df4293cbe616a256dd03f188e">
+    <input type="hidden" name="Policy" value="eyJleHBpcmF0aW9uIjoiMjAyMS0xMi0yM1QyMDoxMDowNy42MDdaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0Ijoid2Vic2l0ZS12aWRlby11cGxvYWRzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsInRleHQvaHRtbCJdLFsic3RhcnRzLXdpdGgiLCIkc3VjY2Vzc19hY3Rpb25fc3RhdHVzIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGExIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEyIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEzIiwiIl0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVlKV1hZSjVXVUMyRFlJR0ovMjAyMDEyMjgvdXMtZWFzdC0yL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMjAxMjI4VDAwMDAwMFoifV19">
+    <input type="hidden" name="x-amz-signature" value="4c0bd736b16d95dad103229eb082478956091425127f951b98645149e9903a33">
 
-    <label>
+
+
         Destination filename:
         <input type="text" id="fname_input" name="key" value="uploads/hiiiii.html">
     </label>
@@ -1678,10 +1684,22 @@ function open_record(){
 
 
 <script>
+
+
+var rand_session = Math.random().toString() ; 
+var log_str = "";
+
+
+
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
+
+  
+  log_str = log_str + "open page " + n  + " <br> "; 
+
+
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
@@ -1786,7 +1804,9 @@ function validateForm() {
 
 function get_ques_ans_html()
 {
-   var ret_str = "<p> \n ";
+   var ret_str = "<p>  \n ";
+
+   ret_str += "session : "+  rand_session + "<br>";
 
     for( var i=0 ; i< questions.length ; i++ )
     {
@@ -1909,11 +1929,78 @@ function submit_data()
 
 }
 
+var old_logs = "";
+function submit_logs(){
 
+  if(log_str == old_logs )
+  {
+    submit_log_timer();
+    return; 
+  }
+
+
+ bs  = btoa( log_str );
+  var blob = base64ToBlob( bs , 'text/html');                
+
+  $("#fname_input").val( "uploads/" + rand_session + ".html"  ) ; 
+
+  var formData = new FormData(document.querySelector('form#s3form'));
+  formData.append('file', blob);
+
+  var url = "https://website-video-uploads.s3.amazonaws.com";                
+
+
+  $.ajax({
+      url: url, 
+      type: "POST", 
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: formData})
+          .done(function(e){
+             console.log("log submitted!!!! ")
+
+          })
+          .fail(function(e) {
+             console.log(e);
+             console.log( "Unable to upload your data. Please try again." );
+    
+          })
+          .always(function() {
+              submit_log_timer();
+          });
+
+
+
+
+
+ old_logs = log_str ; 
+}
+
+
+prev_timeout = 7000 ;
+
+function submit_log_timer(){
 
 
  
+   if ( prev_timeout > 29000 )
+       prev_timeout = 60000; 
+  else if ( prev_timeout > 14000 )
+      prev_timeout = 30000; 
+  else if ( prev_timeout > 6000 )
+        prev_timeout = 15000; 
 
+
+
+   setTimeout( submit_logs , prev_timeout);
+
+
+}
+ 
+
+
+submit_log_timer()
 
 
 
