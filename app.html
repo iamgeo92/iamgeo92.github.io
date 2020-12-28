@@ -1649,11 +1649,11 @@ function open_record(){
 
 
 <form action="https://website-video-uploads.s3.amazonaws.com" style="display: none" id="s3form" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="acl" value="public-read">
+     <input type="hidden" name="acl" value="public-read">
     <input type="hidden" name="Content-Type" value="image/png">
-    <input type="hidden" name="x-amz-credential" value="AKIAYJWXYJ5WUC2DYIGJ/20201127/us-east-2/s3/aws4_request">
+    <input type="hidden" name="x-amz-credential" value="AKIAYJWXYJ5WUC2DYIGJ/20201228/us-east-2/s3/aws4_request">
     <input type="hidden" name="x-amz-algorithm" value="AWS4-HMAC-SHA256">
-    <input type="hidden" name="x-amz-date" value="20201127T000000Z">
+    <input type="hidden" name="x-amz-date" value="20201228T000000Z">
 <!--    <input type="hidden" name="$success_action_redirect" value="https://example.com">-->
     <input type="hidden" name="success_action_status" value="201">
 
@@ -1661,8 +1661,8 @@ function open_record(){
     <input type="hidden" name="x-amz-meta-data2" value="some other meta value">
     <input type="hidden" name="x-amz-meta-data3" value="one more">
 
-    <input type="hidden" name="Policy" value="eyJleHBpcmF0aW9uIjoiMjAyMS0xMS0yMlQwOTo0MjoxOS44MDlaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0Ijoid2Vic2l0ZS12aWRlby11cGxvYWRzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL3BuZyJdLFsic3RhcnRzLXdpdGgiLCIkc3VjY2Vzc19hY3Rpb25fc3RhdHVzIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGExIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEyIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEzIiwiIl0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVlKV1hZSjVXVUMyRFlJR0ovMjAyMDExMjcvdXMtZWFzdC0yL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMjAxMTI3VDAwMDAwMFoifV19">
-    <input type="hidden" name="x-amz-signature" value="ff687f3b6f463a81fcc70897223ee3ef17628d590ceaa93599d79c8afb5c7741">
+    <input type="hidden" name="Policy" value="eyJleHBpcmF0aW9uIjoiMjAyMS0xMi0yM1QxNDozODozOS40MjNaIiwiY29uZGl0aW9ucyI6W3siYnVja2V0Ijoid2Vic2l0ZS12aWRlby11cGxvYWRzIn0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLHsiYWNsIjoicHVibGljLXJlYWQifSxbInN0YXJ0cy13aXRoIiwiJENvbnRlbnQtVHlwZSIsImltYWdlL3BuZyJdLFsic3RhcnRzLXdpdGgiLCIkc3VjY2Vzc19hY3Rpb25fc3RhdHVzIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGExIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEyIiwiIl0sWyJzdGFydHMtd2l0aCIsIiR4LWFtei1tZXRhLWRhdGEzIiwiIl0seyJ4LWFtei1jcmVkZW50aWFsIjoiQUtJQVlKV1hZSjVXVUMyRFlJR0ovMjAyMDEyMjgvdXMtZWFzdC0yL3MzL2F3czRfcmVxdWVzdCJ9LHsieC1hbXotYWxnb3JpdGhtIjoiQVdTNC1ITUFDLVNIQTI1NiJ9LHsieC1hbXotZGF0ZSI6IjIwMjAxMjI4VDAwMDAwMFoifV19">
+    <input type="hidden" name="x-amz-signature" value="96a2799d8b6099020d574ad3ee28ac11066a402df4293cbe616a256dd03f188e">
 
     <label>
         Destination filename:
@@ -1897,8 +1897,10 @@ function submit_data()
               window.location.href = 'https://dentalsmarts.co';
 
           })
-          .fail(function() {
+          .fail(function(e) {
+	     console.log(e);
              alert( "Unable to upload your data. Please try again." );
+	  
           })
           .always(function() {
              $("#loadig_gif").hide();
